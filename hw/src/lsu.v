@@ -8,25 +8,6 @@ module lsu (
     output [31:0]   read_data_o,  // Datos leídos de memoria
     output          ready_o,      // Señal lista, indica que la operación ha terminado
 
-    // Interfaz AXI-Lite
-    output [31:0]   axi_awaddr_o, // Dirección de escritura
-    output          axi_awvalid_o,// Solicitud válida para dirección de escritura
-    input           axi_awready_i,// Listo para aceptar dirección de escritura
-
-    output [31:0]   axi_wdata_o,  // Datos para escribir en memoria
-    output          axi_wvalid_o, // Solicitud válida para datos de escritura
-    input           axi_wready_i, // Listo para aceptar datos de escritura
-
-    output          axi_bready_o, // Listo para recibir respuesta de escritura
-    input           axi_bvalid_i, // Respuesta válida de escritura
-
-    output [31:0]   axi_araddr_o, // Dirección de lectura
-    output          axi_arvalid_o,// Solicitud válida para dirección de lectura
-    input           axi_arready_i,// Listo para aceptar dirección de lectura
-
-    input [31:0]    axi_rdata_i,  // Datos leídos de la memoria
-    input           axi_rvalid_i, // Respuesta válida de lectura
-    output          axi_rready_o  // Listo para recibir datos leídos
 );
 
     // Definición de estados para FSM

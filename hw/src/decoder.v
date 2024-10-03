@@ -1,5 +1,6 @@
 module decoder (
     input [31:0] instr_i,      // Registro de instrucción de 32 bits (entrada)
+    
     output reg [2:0] alu_op_o, // Señal de operación de la ALU (salida)
     output reg reg_write_o,    // Señal para escribir en registros (salida)
     output reg branch_o,       // Señal de salto condicional (salida)
@@ -8,6 +9,7 @@ module decoder (
     output reg mem_read_o,     // Señal de lectura de memoria (salida)
     output reg mem_write_o,    // Señal de escritura en memoria (salida)
     output reg mem_to_reg_o,   // Señal para escribir valor desde memoria al registro (salida)
+    
     output [4:0] rs1_o,        // Registro fuente 1 (salida)
     output [4:0] rs2_o,        // Registro fuente 2 (salida)
     output [4:0] rd_o,         // Registro destino (salida)
@@ -21,11 +23,9 @@ module decoder (
     assign funct3 = instr_i[14:12];      // Función (funct3)
     assign rs1_o = instr_i[19:15];       // Registro fuente 1
     assign rs2_o = instr_i[24:20];       // Registro fuente 2
-    wire  [31:0] I_imm = instr_i[31:20];       // Inmediato de 12 bits 
+    wire  [31:0] I_imm = instr_i[31:20];       // Inmediato de 12 bits
     wire  [31:0] S_imm = {instr_i[31:25], instr_i[11:7]};  // Inmediato de 12 bits para SW
     wire  [31:0] B_imm = {instr_i[31], instr_i[7], instr_i[30:25], instr_i[11:8], 1'b0};  // Inmediato de 13 bits para BEQ
-    
-
     reg [6:0] funct7;                    // Campo funct7 para identificar instrucciones R-type
 
     // Decodificación de opcode y funct3 con asignación de valores por defecto

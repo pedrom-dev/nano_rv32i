@@ -1,61 +1,79 @@
-`include "regfile.v"
-`include "decoder.v"
-`include "alu.v"
-`include "lsu.v"
-
 module nano_rv32i (
-    input           clk_i,          
-    input           rst_n_i,    
+    /*********************************************
+    *          INTERFAZ SEÑALES DE CONTROL       *
+    *********************************************/
+    input           clk_i,          // Señal de reloj (clock input)
+    input           rst_n_i,        // Señal de reset activo en bajo (active-low reset)
 
-    output reg [31:0] i_addr_o,
-    output reg        i_rd_o,
-    input      [31:0] i_data_i, 
+    /*********************************************
+    *       INTERFAZ DE LA MEMORIA DE INSTRUCCIONES *
+    *********************************************/
+    output reg [31:0] i_addr_o,     // Dirección de la instrucción actual que se va a leer de la memoria de instrucciones
+    output reg        i_rd_o,       // Señal para activar la lectura de la instrucción (siempre activada)
+    input      [31:0] i_data_i,     // Instrucción de 32 bits leída desde la memoria de instrucciones
 
-    output reg [31:0] d_addr_o,
-    output reg        d_rd_o,
-    input  reg [31:0] d_data_i,
-    output reg        d_wr_o, 
-    output reg [31:0] d_data_o 
+    /*********************************************
+    *          INTERFAZ DE LA MEMORIA DE DATOS   *
+    *********************************************/
+    output reg [31:0] d_addr_o,     // Dirección de memoria de datos para operaciones de carga/almacenamiento (lectura/escritura)
+    input  reg [31:0] d_data_i,     // Dato de 32 bits leído desde la memoria de datos
+    output reg [31:0] d_data_o,     // Dato de 32 bits que se va a escribir en la memoria de datos
+    output reg        d_rd_o,       // Señal para activar la lectura de datos desde la memoria
+    output reg        d_wr_o,       // Señal para activar la escritura de datos en la memoria
 );
 
-    // Señales internas
-    wire [2:0]  alu_op_w;
-    wire        reg_write_w;
-    wire        branch_w;
-    wire        jump_w;
-    wire        pc_write_w;
-    wire        mem_read_w;
-    wire        mem_write_w;
-    wire        mem_to_reg_w;
-    wire [31:0] rs1_data_w;
-    wire [31:0] rs2_data_w;
-    wire [31:0] alu_result_w;
-    wire [31:0] write_data_w;
-    wire [31:0] read_data_w;
-    wire [4:0]  rs1_w;
-    wire [4:0]  rs2_w;
-    wire [4:0]  rd_w;
-    wire [11:0] imm_w;
-    wire        zero_w;
+    /*********************************************
+    *         SEÑALES INTERNAS DE CONTROL        *
+    *********************************************/
+    wire [2:0]  alu_op_w;           // Operación que la ALU debe realizar (add, sub, etc.) | DECODER -> ALU
+    wire        reg_write_w;        // Señal que indica si se debe escribir en un registro | DECODER -> REGFILE
+    wire        branch_w;           // Señal que indica si se está ejecutando una instrucción de salto condicional (branch) | DECODER -> PC CONTROL
+    wire        jump_w;             // Señal que indica si se está ejecutando una instrucción de salto incondicional (jump) | DECODER -> PC CONTROL
+    wire        pc_write_w;         // Señal que permite escribir una nueva dirección en el Program Counter (PC) | DECODER -> PC CONTROL
+    wire        mem_read_w;         // Señal que indica si se debe leer desde la memoria de datos | DECODER -> MEMORY INTERFACE
+    wire        mem_write_w;        // Señal que indica si se debe escribir en la memoria de datos | DECODER -> MEMORY INTERFACE
+    wire        mem_to_reg_w;       // Señal que indica si el valor a escribir en el registro proviene de la memoria | DECODER -> REGFILE
+    
+    // Interfaz del archivo de registros    
+    wire [31:0] rs1_data_w;         // Valor del registro fuente 1 (rs1)
+    wire [31:0] rs2_data_w;         // Valor del registro fuente 2 (rs2)
+    wire [4:0]  rs1_w;              // Dirección del registro fuente 1
+    wire [4:0]  rs2_w;              // Dirección del registro fuente 2
+    wire [4:0]  rd_w;               // Dirección del registro de destino (donde se va a escribir el resultado)
 
-    // Registros para manejar el Program Counter (PC)
-    reg [31:0] pc_r;
+    // Interfaz de la ALU
+    wire [31:0] alu_result_w;       // Resultado de la operación realizada por la ALU
+    wire        zero_w;             // Señal que indica si el resultado de la ALU es cero (usado en instrucciones de salto condicional)
+
+    // Interfaz de memoria de datos (Lectura y Escritura)
+    wire [31:0] write_data_w;       // Dato que se va a escribir en el registro de destino (puede provenir de la ALU o de la memoria)
+    wire [31:0] read_data_w;        // Dato leído desde la memoria de datos
+    
+    // Señales de inmediato (Immediate)
+    wire [11:0] imm_w;              // Valor inmediato de 12 bits decodificado de la instrucción
+
+    /*********************************************
+    *  UNIDAD DE CONTROL DEL PROGRAM COUNTER (PC) *
+    *********************************************/
+    reg [31:0] pc_r; // Registro para manejar el Program Counter (PC)
 
     always @(posedge clk_i) begin
         if (!rst_n_i) begin
             pc_r <= 32'b0;  // Inicialización del PC
         end else if (pc_write_w) begin
             if (jump_w) begin
-                pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Para salto incondicional
+                pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto incondicional (??????)
             end else if (branch_w && zero_w) begin
-                pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Para salto condicional (beq)
+                pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto condicional (beq)
             end else begin
                 pc_r <= pc_r + 4;  // Siguiente instrucción
             end
         end
     end
 
-    // Instancia del decodificador
+    /*********************************************
+    *         INSTANCIACIÓN DEL DECODIFICADOR    *
+    *********************************************/
     decoder decoder_inst (
         .instr_i(i_data_i),
         .alu_op_o(alu_op_w),
@@ -73,7 +91,9 @@ module nano_rv32i (
         .opcode_o()
     );
 
-    // Instancia del archivo de registros
+    /*********************************************
+    *     INSTANCIACIÓN DEL ARCHIVO DE REGISTROS *
+    *********************************************/
     regfile regfile_inst (
         .clk_i(clk_i),
         .rst_n_i(rst_n_i),
@@ -86,7 +106,9 @@ module nano_rv32i (
         .rs2_data_o(rs2_data_w)
     );
 
-    // Instancia de la ALU
+    /*********************************************
+    *            INSTANCIACIÓN DE LA ALU         *
+    *********************************************/
     alu alu_inst (
         .a_i(rs1_data_w),
         .b_i(mem_to_reg_w ? read_data_w : {{20{imm_w[11]}}, imm_w}),  // Inmediato o valor de memoria
@@ -96,14 +118,13 @@ module nano_rv32i (
     );
 
     always @(*) begin
-        d_addr_o = alu_result_w;
+        d_addr_o = alu_result_w; // ??????
         d_rd_o = reg_write_w;
         d_data_o = rs2_data_w;
         d_wr_o = mem_write_w;
         i_addr_o = pc_r;
         i_rd_o = 1'b1;
     end
-    
 
     assign write_data_w = mem_to_reg_w ? read_data_w : alu_result_w;
 
