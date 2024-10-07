@@ -26,8 +26,7 @@ module tb_regfile;
         .rs2_data_o(rs2_data_o)
     );
 
-    // Generador de reloj
-    always #5 clk_i = ~clk_i;  // Reloj de 10ns (100 MHz)
+    always #5 clk_i = ~clk_i;  
 
     initial begin
         // Inicialización de señales
@@ -70,7 +69,7 @@ module tb_regfile;
         #50 $finish;
     end
 
-        // Monitor de estado del banco de registros
+    // Monitor de estado del banco de registros
     always @(posedge clk_i) begin
         if (!rst_n_i) begin
             $display("Reseteando el banco de registros...");
