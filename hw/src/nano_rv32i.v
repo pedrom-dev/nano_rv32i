@@ -111,7 +111,7 @@ module nano_rv32i (
     *********************************************/
     alu alu_inst (
         .a_i(rs1_data_w),
-        .b_i(mem_to_reg_w ? read_data_w : {{20{imm_w[11]}}, imm_w}),  // Inmediato o valor de memoria (????????)
+        .b_i(mem_to_reg_w ? read_data_w : {{20{imm_w[11]}}, imm_w}),  // Inmediato o valor de memoria
         .alu_op_i(alu_op_w),
         .result_o(alu_result_w),
         .zero_o(zero_w)

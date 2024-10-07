@@ -1,11 +1,13 @@
 module regfile (
     input clk_i,               // Señal de reloj
     input rst_n_i,             // Señal de reset
+    
     input reg_write_i,         // Señal de control de escritura en registro
     input [4:0] rs1_i,         // Registro fuente 1
     input [4:0] rs2_i,         // Registro fuente 2
     input [4:0] rd_i,          // Registro destino
     input [31:0] write_data_i, // Datos a escribir en el registro destino
+    
     output [31:0] rs1_data_o,  // Datos leídos del registro fuente 1
     output [31:0] rs2_data_o   // Datos leídos del registro fuente 2
 );

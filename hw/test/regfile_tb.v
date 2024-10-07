@@ -2,80 +2,85 @@
 
 module tb_regfile;
 
-    // Inputs
+    // Señales de prueba
     reg clk_i;
-    reg reset_n;
-    reg [4:0] r1_addr_i;
-    reg [4:0] r2_addd_i;
-    reg [4:0] w_addr_i;
-    reg we_i;
-    reg [31:0] wdata_i;
+    reg rst_n_i;
+    reg reg_write_i;
+    reg [4:0] rs1_i;
+    reg [4:0] rs2_i;
+    reg [4:0] rd_i;
+    reg [31:0] write_data_i;
+    wire [31:0] rs1_data_o;
+    wire [31:0] rs2_data_o;
 
-    // Outputs
-    wire [31:0] r1_data_o;
-    wire [31:0] r2_data_o;
-
-    // Instantiate the Unit Under Test (UUT)
+    // Instanciar el módulo regfile (banco de registros)
     regfile uut (
         .clk_i(clk_i), 
-        .reset_n(reset_n), 
-        .r1_addr_i(r1_addr_i), 
-        .r2_addd_i(r2_addd_i), 
-        .w_addr_i(w_addr_i), 
-        .we_i(we_i), 
-        .wdata_i(wdata_i), 
-        .r1_data_o(r1_data_o), 
-        .r2_data_o(r2_data_o)
+        .rst_n_i(rst_n_i), 
+        .reg_write_i(reg_write_i), 
+        .rs1_i(rs1_i), 
+        .rs2_i(rs2_i), 
+        .rd_i(rd_i), 
+        .write_data_i(write_data_i), 
+        .rs1_data_o(rs1_data_o), 
+        .rs2_data_o(rs2_data_o)
     );
 
-    // Clock generation
-    always #5 clk_i = ~clk_i; // 10ns clock period (100 MHz)
+    // Generador de reloj
+    always #5 clk_i = ~clk_i;  // Reloj de 10ns (100 MHz)
 
     initial begin
-        // Initialize Inputs
+        // Inicialización de señales
         clk_i = 0;
-        reset_n = 0;
-        r1_addr_i = 0;
-        r2_addd_i = 0;
-        w_addr_i = 0;
-        we_i = 0;
-        wdata_i = 0;
+        rst_n_i = 0;
+        reg_write_i = 0;
+        rs1_i = 0;
+        rs2_i = 0;
+        rd_i = 0;
+        write_data_i = 0;
 
-        // Reset the regfile
-        #10 reset_n = 1;
-
-        // Write to register 1
-        #10 w_addr_i = 5'd1;
-            wdata_i = 32'hDEADBEEF;
-            we_i = 1;
+        // Aplicar reset
+        #10 rst_n_i = 1;  // Quitamos el reset después de 10 ns
         
-        #10 we_i = 0;
+        // Escritura en el registro 1
+        #10 rd_i = 5'd1;  // Registro destino: 1
+            write_data_i = 32'hDEADBEEF;  // Dato a escribir
+            reg_write_i = 1;  // Activar escritura
 
-        // Read from register 1
-        #10 r1_addr_i = 5'd1;
+        #10 reg_write_i = 0;  // Desactivar escritura
 
-        // Write to register 2
-        #10 w_addr_i = 5'd2;
-            wdata_i = 32'hCAFEBABE;
-            we_i = 1;
+        // Leer desde el registro 1
+        #10 rs1_i = 5'd1;  // Leer el registro fuente 1
 
-        #10 we_i = 0;
+        // Escritura en el registro 2
+        #10 rd_i = 5'd2;  // Registro destino: 2
+            write_data_i = 32'hCAFEBABE;  // Dato a escribir
+            reg_write_i = 1;
 
-        // Read from register 2
-        #10 r2_addd_i = 5'd2;
+        #10 reg_write_i = 0;  // Desactivar escritura
 
-        // Test reading from register 0 (should always be 0)
-        #10 r1_addr_i = 5'd0;
-            r2_addd_i = 5'd0;
+        // Leer desde el registro 2
+        #10 rs2_i = 5'd2;  // Leer el registro fuente 2
 
-        // Finish simulation
+        // Probar lectura del registro 0 (siempre debe ser 0)
+        #10 rs1_i = 5'd0;  // Leer el registro x0
+            rs2_i = 5'd0;  // Leer el registro x0
+
+        // Finalizar simulación
         #50 $finish;
     end
 
-    // Monitor output values
-    initial begin
-        $monitor("Time = %t | r1_addr = %d | r1_data = %h | r2_addr = %d | r2_data = %h",
-                 $time, r1_addr_i, r1_data_o, r2_addd_i, r2_data_o);
+        // Monitor de estado del banco de registros
+    always @(posedge clk_i) begin
+        if (!rst_n_i) begin
+            $display("Reseteando el banco de registros...");
+        end else begin
+            $display("Banco de registros en el ciclo de reloj actual:");
+            for (int i = 0; i < 32; i = i + 1) begin
+                $display("Registro [%0d] = %h", i, uut.regfile[i]);
+            end
+            $display("---------------------------------------------");
+        end
     end
 
 endmodule
