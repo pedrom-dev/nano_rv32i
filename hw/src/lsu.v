@@ -6,7 +6,7 @@ module lsu (
     input           mem_read_i,   // Señal para lectura de memoria
     input           mem_write_i,  // Señal para escritura en memoria
     output [31:0]   read_data_o,  // Datos leídos de memoria
-    output          ready_o,      // Señal lista, indica que la operación ha terminado
+    output          ready_o      // Señal lista, indica que la operación ha terminado
 
 );
 

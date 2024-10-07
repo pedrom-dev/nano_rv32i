@@ -16,10 +16,10 @@ module nano_rv32i (
     *          INTERFAZ DE LA MEMORIA DE DATOS   *
     *********************************************/
     output reg [31:0] d_addr_o,     // Dirección de memoria de datos para operaciones de carga/almacenamiento (lectura/escritura)
-    input  reg [31:0] d_data_i,     // Dato de 32 bits leído desde la memoria de datos
+    input       [31:0] d_data_i,     // Dato de 32 bits leído desde la memoria de datos
     output reg [31:0] d_data_o,     // Dato de 32 bits que se va a escribir en la memoria de datos
     output reg        d_rd_o,       // Señal para activar la lectura de datos desde la memoria
-    output reg        d_wr_o,       // Señal para activar la escritura de datos en la memoria
+    output reg        d_wr_o       // Señal para activar la escritura de datos en la memoria
 );
 
     /*********************************************
@@ -32,7 +32,7 @@ module nano_rv32i (
     wire        pc_write_w;         // Señal que permite escribir una nueva dirección en el Program Counter (PC) | DECODER -> PC CONTROL
     wire        mem_read_w;         // Señal que indica si se debe leer desde la memoria de datos | DECODER -> MEMORY INTERFACE
     wire        mem_write_w;        // Señal que indica si se debe escribir en la memoria de datos | DECODER -> MEMORY INTERFACE
-    wire        mem_to_reg_w;       // Señal que indica si el valor a escribir en el registro proviene de la memoria | DECODER -> REGFILE
+    wire        mem_to_reg_w;       // Señal que indica si el valor a escribir en el registro proviene de la memoria (LOAD) | DECODER -> REGFILE
     
     // Interfaz del archivo de registros    
     wire [31:0] rs1_data_w;         // Valor del registro fuente 1 (rs1)
@@ -111,21 +111,39 @@ module nano_rv32i (
     *********************************************/
     alu alu_inst (
         .a_i(rs1_data_w),
-        .b_i(mem_to_reg_w ? read_data_w : {{20{imm_w[11]}}, imm_w}),  // Inmediato o valor de memoria
+        .b_i(mem_to_reg_w ? read_data_w : {{20{imm_w[11]}}, imm_w}),  // Inmediato o valor de memoria (????????)
         .alu_op_i(alu_op_w),
         .result_o(alu_result_w),
         .zero_o(zero_w)
     );
 
-    always @(*) begin
-        d_addr_o = alu_result_w; // ??????
-        d_rd_o = reg_write_w;
-        d_data_o = rs2_data_w;
-        d_wr_o = mem_write_w;
-        i_addr_o = pc_r;
-        i_rd_o = 1'b1;
+    //assign d_addr_o = alu_result_w; //???????
+    //assign d_rd_o = reg_write_w; // ??????
+    //assign d_data_o = rs2_data_w; // ????
+    //assign d_wr_o = mem_write_w;
+    //assign i_addr_o = pc_r;
+    //assign i_rd_o = 1'b1;
+    
+    always @(posedge clk_i or posedge rst_n_i) begin
+    if (rst_n_i) begin
+        // Inicialización de señales en reset
+        d_addr_o <= 32'b0;
+        d_rd_o <= 1'b0;
+        d_data_o <= 32'b0;
+        d_wr_o <= 1'b0;
+        i_addr_o <= 32'b0;
+        i_rd_o <= 1'b0;
+    end else begin
+        d_addr_o <= alu_result_w;     
+        d_rd_o <= reg_write_w;        
+        d_data_o <= rs2_data_w;       
+        d_wr_o <= mem_write_w;        
+        i_addr_o <= pc_r;             
+        i_rd_o <= 1'b1;               
     end
+end
+    
 
-    assign write_data_w = mem_to_reg_w ? read_data_w : alu_result_w;
+    assign write_data_w = mem_to_reg_w ? read_data_w : alu_result_w; // ???????
 
 endmodule
