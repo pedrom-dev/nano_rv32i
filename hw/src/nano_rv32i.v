@@ -1,20 +1,11 @@
 module nano_rv32i (
-    /*********************************************
-    *          INTERFAZ SEÑALES DE CONTROL       *
-    *********************************************/
     input           clk_i,          // Señal de reloj (clock input)
     input           rst_n_i,        // Señal de reset activo en bajo (active-low reset)
 
-    /*********************************************
-    *       INTERFAZ DE LA MEMORIA DE INSTRUCCIONES *
-    *********************************************/
     output reg [31:0] i_addr_o,     // Dirección de la instrucción actual que se va a leer de la memoria de instrucciones
     output reg        i_rd_o,       // Señal para activar la lectura de la instrucción (siempre activada)
     input      [31:0] i_data_i,     // Instrucción de 32 bits leída desde la memoria de instrucciones
 
-    /*********************************************
-    *          INTERFAZ DE LA MEMORIA DE DATOS   *
-    *********************************************/
     output reg [31:0] d_addr_o,     // Dirección de memoria de datos para operaciones de carga/almacenamiento (lectura/escritura)
     input       [31:0] d_data_i,     // Dato de 32 bits leído desde la memoria de datos
     output reg [31:0] d_data_o,     // Dato de 32 bits que se va a escribir en la memoria de datos
@@ -22,9 +13,6 @@ module nano_rv32i (
     output reg        d_wr_o       // Señal para activar la escritura de datos en la memoria
 );
 
-    /*********************************************
-    *         SEÑALES INTERNAS DE CONTROL        *
-    *********************************************/
     wire [2:0]  alu_op_w;           // Operación que la ALU debe realizar (add, sub, etc.) | DECODER -> ALU
     wire        reg_write_w;        // Señal que indica si se debe escribir en un registro | DECODER -> REGFILE
     wire        branch_w;           // Señal que indica si se está ejecutando una instrucción de salto condicional (branch) | DECODER -> PC CONTROL
@@ -52,9 +40,6 @@ module nano_rv32i (
     // Señales de inmediato (Immediate)
     wire [11:0] imm_w;              // Valor inmediato de 12 bits decodificado de la instrucción
 
-    /*********************************************
-    *  UNIDAD DE CONTROL DEL PROGRAM COUNTER (PC) *
-    *********************************************/
     reg [31:0] pc_r; // Registro para manejar el Program Counter (PC)
 
     always @(posedge clk_i) begin
@@ -62,7 +47,7 @@ module nano_rv32i (
             pc_r <= 32'b0;  // Inicialización del PC
         end else if (pc_write_w) begin
             if (jump_w) begin
-                pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto incondicional (??????)
+                pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto incondicional
             end else if (branch_w && zero_w) begin
                 pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto condicional (beq)
             end else begin
@@ -71,9 +56,6 @@ module nano_rv32i (
         end
     end
 
-    /*********************************************
-    *         INSTANCIACIÓN DEL DECODIFICADOR    *
-    *********************************************/
     decoder decoder_inst (
         .instr_i(i_data_i),
         .alu_op_o(alu_op_w),
@@ -91,9 +73,6 @@ module nano_rv32i (
         .opcode_o()
     );
 
-    /*********************************************
-    *     INSTANCIACIÓN DEL ARCHIVO DE REGISTROS *
-    *********************************************/
     regfile regfile_inst (
         .clk_i(clk_i),
         .rst_n_i(rst_n_i),
@@ -106,9 +85,6 @@ module nano_rv32i (
         .rs2_data_o(rs2_data_w)
     );
 
-    /*********************************************
-    *            INSTANCIACIÓN DE LA ALU         *
-    *********************************************/
     alu alu_inst (
         .a_i(rs1_data_w),
         .b_i(mem_to_reg_w ? read_data_w : {{20{imm_w[11]}}, imm_w}),  // Inmediato o valor de memoria
@@ -125,23 +101,23 @@ module nano_rv32i (
     //assign i_rd_o = 1'b1;
     
     always @(posedge clk_i or posedge rst_n_i) begin
-    if (rst_n_i) begin
-        // Inicialización de señales en reset
-        d_addr_o <= 32'b0;
-        d_rd_o <= 1'b0;
-        d_data_o <= 32'b0;
-        d_wr_o <= 1'b0;
-        i_addr_o <= 32'b0;
-        i_rd_o <= 1'b0;
-    end else begin
-        d_addr_o <= alu_result_w;     
-        d_rd_o <= reg_write_w;        
-        d_data_o <= rs2_data_w;       
-        d_wr_o <= mem_write_w;        
-        i_addr_o <= pc_r;             
-        i_rd_o <= 1'b1;               
+        if (rst_n_i) begin
+            // Inicialización de señales en reset
+            d_addr_o <= 32'b0;
+            d_rd_o <= 1'b0;
+            d_data_o <= 32'b0;
+            d_wr_o <= 1'b0;
+            i_addr_o <= 32'b0;
+            i_rd_o <= 1'b0;
+        end else begin
+            d_addr_o <= alu_result_w;     
+            d_rd_o <= reg_write_w;        
+            d_data_o <= rs2_data_w;       
+            d_wr_o <= mem_write_w;        
+            i_addr_o <= pc_r;             
+            i_rd_o <= 1'b1;               
+        end
     end
-end
     
 
     assign write_data_w = mem_to_reg_w ? read_data_w : alu_result_w; // ???????

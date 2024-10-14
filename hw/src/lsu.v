@@ -19,25 +19,9 @@ module lsu (
 
     reg [2:0] state, next_state;
 
-    // Señales de control
-    reg axi_awvalid, axi_wvalid, axi_arvalid;
-    reg [31:0] axi_awaddr, axi_araddr, axi_wdata;
-
     // Salida de la memoria leída
     reg [31:0] read_data;
     reg ready;
-
-    // Asignaciones de salidas
-    assign axi_awaddr_o  = axi_awaddr;
-    assign axi_awvalid_o = axi_awvalid;
-    assign axi_wdata_o   = axi_wdata;
-    assign axi_wvalid_o  = axi_wvalid;
-    assign axi_bready_o  = 1'b1;             // Siempre listo para aceptar la respuesta de escritura
-    assign axi_araddr_o  = axi_araddr;
-    assign axi_arvalid_o = axi_arvalid;
-    assign axi_rready_o  = 1'b1;             // Siempre listo para aceptar la respuesta de lectura
-    assign read_data_o   = read_data;
-    assign ready_o       = ready;
 
     // FSM: Transiciones de estado
     always @(posedge clk_i) begin
