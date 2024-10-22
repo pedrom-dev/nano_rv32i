@@ -18,6 +18,7 @@ module nano_rv32i (
     wire        branch_w;           // Señal que indica si se está ejecutando una instrucción de salto condicional (branch) | DECODER -> PC CONTROL
     wire        jump_w;             // Señal que indica si se está ejecutando una instrucción de salto incondicional (jump) | DECODER -> PC CONTROL
     wire        pc_write_w;         // Señal que permite escribir una nueva dirección en el Program Counter (PC) | DECODER -> PC CONTROL
+    wire        use_imm_w;          
     wire        mem_read_w;         // Señal que indica si se debe leer desde la memoria de datos | DECODER -> MEMORY INTERFACE
     wire        mem_write_w;        // Señal que indica si se debe escribir en la memoria de datos | DECODER -> MEMORY INTERFACE
     wire        mem_to_reg_w;       // Señal que indica si el valor a escribir en el registro proviene de la memoria (LOAD) | DECODER -> REGFILE
@@ -32,6 +33,9 @@ module nano_rv32i (
     // Interfaz de la ALU
     wire [31:0] alu_result_w;       // Resultado de la operación realizada por la ALU
     wire        zero_w;             // Señal que indica si el resultado de la ALU es cero (usado en instrucciones de salto condicional)
+
+    //LSU's interface
+    wire ls_w;
 
     // Interfaz de memoria de datos (Lectura y Escritura)
     wire [31:0] write_data_w;       // Dato que se va a escribir en el registro de destino (puede provenir de la ALU o de la memoria)
@@ -60,6 +64,7 @@ module nano_rv32i (
         .instr_i(i_data_i),
         .alu_op_o(alu_op_w),
         .reg_write_o(reg_write_w),
+        .use_imm_o(use_imm_w),
         .branch_o(branch_w),
         .jump_o(jump_w),
         .pc_write_o(pc_write_w),
@@ -70,7 +75,6 @@ module nano_rv32i (
         .rs2_o(rs2_w),
         .rd_o(rd_w),
         .imm_o(imm_w),
-        .opcode_o()
     );
 
     regfile regfile_inst (
@@ -87,7 +91,7 @@ module nano_rv32i (
 
     alu alu_inst (
         .a_i(rs1_data_w),
-        .b_i(mem_to_reg_w ? read_data_w : {{20{imm_w[11]}}, imm_w}),  // Inmediato o valor de memoria
+        .b_i(use_imm_w ? {{20{imm_w[11]}}, imm_w} : rs2_data_w), // Inmediato o registro
         .alu_op_i(alu_op_w),
         .result_o(alu_result_w),
         .zero_o(zero_w)
@@ -100,7 +104,7 @@ module nano_rv32i (
     //assign i_addr_o = pc_r;
     //assign i_rd_o = 1'b1;
     
-    always @(posedge clk_i or posedge rst_n_i) begin
+    always @(posedge clk_i) begin 
         if (rst_n_i) begin
             // Inicialización de señales en reset
             d_addr_o <= 32'b0;
@@ -120,6 +124,6 @@ module nano_rv32i (
     end
     
 
-    assign write_data_w = mem_to_reg_w ? read_data_w : alu_result_w; // ???????
+    assign write_data_w = mem_to_reg_w ? read_data_w : alu_result_w;
 
 endmodule
