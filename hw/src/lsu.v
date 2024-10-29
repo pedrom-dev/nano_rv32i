@@ -1,130 +1,55 @@
-module lsu (
-    input           clk_i,        // Reloj
-    input           rst_n_i,        // Reset
-    input [31:0]    addr_i,       // Dirección de memoria
-    input [31:0]    write_data_i, // Datos para escribir en memoria
-    input           mem_read_i,   // Señal para lectura de memoria
-    input           mem_write_i,  // Señal para escritura en memoria
-    output [31:0]   read_data_o,  // Datos leídos de memoria
-    output          ready_o      // Señal lista, indica que la operación ha terminado
+    module lsu (
+        input clk_i,
+        int rst_n_i,
+        
+        input wire ls_i
+        input wire [2:0] funct3_i,
+        input wire [31:0] d_addr_i, // Data memory address for load/store instructions (rs1 + offset)
+        input wire [31:0] d_data_i, // Data to be stored for store instructions (rs2)
+        input wire mem_read_i,
+        input wire mem_write_i,
 
-);
+        output wire d_data_o // Data to be stored in regfile for load instructions
+    );
 
-    // Definición de estados para FSM
-    localparam IDLE      = 3'b000,
-               WRITE     = 3'b001,
-               WRITE_RESP= 3'b010,
-               READ      = 3'b011,
-               READ_WAIT = 3'b100;
+        // Simulated memory of 1024 words, each 32 bits
+        reg [31:0] memory [0:1023];
 
-    reg [2:0] state, next_state;
+        reg [31:0] load_data;
+        assign d_data_o = load_data;
 
-    // Salida de la memoria leída
-    reg [31:0] read_data;
-    reg ready;
-
-    // FSM: Transiciones de estado
-    always @(posedge clk_i) begin
-        if (!rst_n_i) begin
-            state <= IDLE;
-        end else begin
-            state <= next_state;
+        always @(*) begin
+            if (mem_write_i) begin
+                case (funct3_i)
+                    3'b000: begin // SB
+                        case (d_addr_i[1:0])
+                            2'b00: memory[d_addr_i[31:2]][7:0]   <= d_data_i[7:0];
+                            2'b01: memory[d_addr_i[31:2]][15:8]  <= d_data_i[7:0];
+                            2'b10: memory[d_addr_i[31:2]][23:16] <= d_data_i[7:0];
+                            2'b11: memory[d_addr_i[31:2]][31:24] <= d_data_i[7:0];
+                        endcase
+                    end
+                    3'b001: begin // SH 
+                        case (d_addr_i[1:0])
+                            2'b00: memory[d_addr_i[31:2]][15:0]  <= d_data_i[15:0];
+                            2'b10: memory[d_addr_i[31:2]][31:16] <= d_data_i[15:0];
+                            default: ;
+                        endcase
+                    end
+                    3'b010: begin // SW
+                        memory[d_addr_i[31:2]] <= d_data_i;
+                    end
+                    default: ; // No action
+                endcase
+                
+            end else if (mem_read_i) begin
+                case (funct3_i[1:0])
+                    2'b00: load_data <= {{24{memory[d_addr_i[31:2]][7]}}, memory[d_addr_i[31:2]][7:0]};  // LB - Load byte with sign extension
+                    2'b01: load_data <= {{16{memory[d_addr_i[31:2]][15]}}, memory[d_addr_i[31:2]][15:0]}; // LH - Load half-word with sign extension
+                    2'b10: load_data <= memory[d_addr_i[31:2]];                                          // LW - Load word
+                    default: load_data <= 32'b0;
+                endcase
+            end
         end
-    end
 
-    // Lógica de estado siguiente
-    always @(*) begin
-        next_state = state;  // Estado por defecto es el mismo
-        case (state)
-            IDLE: begin
-                if (mem_write_i) begin
-                    next_state = WRITE;
-                end else if (mem_read_i) begin
-                    next_state = READ;
-                end
-            end
-
-            WRITE: begin
-                if (axi_awready_i && axi_wready_i) begin
-                    next_state = WRITE_RESP;
-                end
-            end
-
-            WRITE_RESP: begin
-                if (axi_bvalid_i) begin
-                    next_state = IDLE;
-                end
-            end
-
-            READ: begin
-                if (axi_arready_i) begin
-                    next_state = READ_WAIT;
-                end
-            end
-
-            READ_WAIT: begin
-                if (axi_rvalid_i) begin
-                    next_state = IDLE;
-                end
-            end
-
-            default: begin
-                next_state = IDLE;
-            end
-        endcase
-    end
-
-    // Lógica de control
-    always @(posedge clk_i) begin
-        if (!rst_n_i) begin
-            axi_awvalid <= 1'b0;
-            axi_wvalid  <= 1'b0;
-            axi_arvalid <= 1'b0;
-            read_data   <= 32'b0;
-            ready       <= 1'b0;
-        end else begin
-            case (state)
-                IDLE: begin
-                    ready <= 1'b0;
-                    if (mem_write_i) begin
-                        axi_awaddr <= addr_i;
-                        axi_wdata  <= write_data_i;
-                        axi_awvalid <= 1'b1;
-                        axi_wvalid  <= 1'b1;
-                    end else if (mem_read_i) begin
-                        axi_araddr <= addr_i;
-                        axi_arvalid <= 1'b1;
-                    end
-                end
-
-                WRITE: begin
-                    if (axi_awready_i) begin
-                        axi_awvalid <= 1'b0;
-                    end
-                    if (axi_wready_i) begin
-                        axi_wvalid <= 1'b0;
-                    end
-                end
-
-                WRITE_RESP: begin
-                    if (axi_bvalid_i) begin
-                        ready <= 1'b1;
-                    end
-                end
-
-                READ: begin
-                    if (axi_arready_i) begin
-                        axi_arvalid <= 1'b0;
-                    end
-                end
-
-                READ_WAIT: begin
-                    if (axi_rvalid_i) begin
-                        read_data <= axi_rdata_i;
-                        ready <= 1'b1;
-                    end
-                end
-            endcase
-        end
-    end
-endmodule
+    endmodule

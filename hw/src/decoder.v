@@ -16,12 +16,13 @@
         output [4:0] rs2_o,        // Registro fuente 2
         output [4:0] rd_o,         // Registro destino
         output reg [11:0] imm_o,   // Inmediato de 12 bits
+        output [2:0] funct3_o
     );
 
         // Instruction fields
         assign opcode_o = instr_i[6:0];      // Opcode
         assign rd_o = instr_i[11:7];         // Registro destino
-        assign funct3 = instr_i[14:12];      // Función (funct3)
+        assign funct3_o = instr_i[14:12];      // Función (funct3_o)
         assign rs1_o = instr_i[19:15];       // Registro fuente 1
         assign rs2_o = instr_i[24:20];       // Registro fuente 2
         wire  [31:0] I_imm = instr_i[31:20];       // Inmediato de 12 bits
@@ -29,7 +30,7 @@
         wire  [31:0] B_imm = {instr_i[31], instr_i[7], instr_i[30:25], instr_i[11:8], 1'b0};  // Inmediato de 13 bits para BEQ
         reg [6:0] funct7;                    // Campo funct7 para identificar instrucciones R-type
 
-        always @(*) begin
+        always @(*) begin   
             alu_op_o    = 3'bxxx; 
             reg_write_o = 1'b0;    
             branch_o    = 1'b0;
@@ -43,7 +44,7 @@
 
             case (opcode_o)
                 7'b0010011: begin
-                    case (funct3)
+                    case (funct3_o)
                         3'b000: begin  // ADDI
                             alu_op_o    = 4'b0000;  
                             reg_write_o = 1'b1;   
@@ -88,7 +89,7 @@
                     endcase     
                 end
                 7'b0110011: begin  // Tipo R (Register-Register)
-                    case (funct3)
+                    case (funct3_o)
                         3'b000: begin
                             if (funct7 == 7'b0000000) begin  // ADD
                                 alu_op_o    = 4'b0000;
@@ -144,7 +145,7 @@
                     endcase
                 end
                 7'b0100011: begin  
-                    case(funct3) 
+                    case(funct3_o) 
                         3'b010: begin // SW
                             alu_op_o    = 3'b000;
                             mem_write_o = 1'b1; 
@@ -165,8 +166,36 @@
                         end
                     endcase
                 end
+                7'b0000011: begin  
+                    case(funct3_o) 
+                        3'b010: begin // LW
+                            alu_op_o    = 3'b000;
+                            mem_read_o = 1'b1; 
+                            imm_o       = I_imm;
+                            mem_to_reg_o = 1'b1;
+                            use_imm_o = 1'b1;
+                            ls_o = 1'b1;
+                        end
+                        3'b001: begin // LH
+                            alu_op_o    = 3'b000;
+                            mem_write_o = 1'b1; 
+                            imm_o       = S_imm;
+                            mem_to_reg_o = 1'b1;
+                            use_imm_o = 1'b1;
+                            ls_o = 1'b1;
+                        end
+                        3'b000: begin // LB
+                            alu_op_o    = 3'b000;
+                            mem_write_o = 1'b1; 
+                            imm_o       = S_imm;
+                            mem_to_reg_o = 1'b1;
+                            use_imm_o = 1'b1;
+                            ls_o = 1'b1;
+                        end
+                    endcase
+                end
                 7'b1100011: begin  // BEQ
-                    if (funct3 == 3'b000) begin
+                    if (funct3_o == 3'b000) begin
                         alu_op_o    = 3'b001;  // Operación SUB (para comparar)
                         branch_o    = 1'b1;
                         //pc_write_o  = (rs1_o == rs2_o) ? 1'b1 : 1'b0;  // Salta si rs1 == rs2
