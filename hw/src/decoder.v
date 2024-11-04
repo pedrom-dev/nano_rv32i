@@ -16,9 +16,10 @@
         output [4:0] rs2_o,        // Registro fuente 2
         output [4:0] rd_o,         // Registro destino
         output reg [11:0] imm_o,   // Inmediato de 12 bits
-        output [2:0] funct3_o
+        output [2:0] funct3_o,
+        output [6:0] opcode_o  
     );
-
+    
         // Instruction fields
         assign opcode_o = instr_i[6:0];      // Opcode
         assign rd_o = instr_i[11:7];         // Registro destino
@@ -194,30 +195,50 @@
                         end
                     endcase
                 end
-                7'b1100011: begin  // BEQ
-                    if (funct3_o == 3'b000) begin
-                        alu_op_o    = 3'b001;  // Operación SUB (para comparar)
-                        branch_o    = 1'b1;
-                        //pc_write_o  = (rs1_o == rs2_o) ? 1'b1 : 1'b0;  // Salta si rs1 == rs2
-                    end
+                7'b1100011: begin  // Tipo B (Branch)
+                    case (funct3_o)
+                        3'b000: begin // BEQ
+                            alu_op_o = 4'b0001;     
+                            branch_o = 1'b1;        
+                            imm_o = B_imm[11:0];   
+                        end
+                        3'b001: begin // BNE 
+                            alu_op_o = 4'b0010; 
+                            branch_o = 1'b1;
+                            imm_o = B_imm[11:0];
+                        end
+                        3'b100: begin // BLT 
+                            alu_op_o = 4'b0011; 
+                            branch_o = 1'b1;
+                            imm_o = B_imm[11:0];
+                        end
+                        3'b101: begin // BGE
+                            alu_op_o = 4'b0100;    
+                            branch_o = 1'b1;
+                            imm_o = B_imm[11:0];
+                        end
+                        3'b110: begin // BLTU 
+                            alu_op_o = 4'b0101;     
+                            branch_o = 1'b1;
+                            imm_o = B_imm[11:0];
+                        end
+                        3'b111: begin // BGEU 
+                            alu_op_o = 4'b0110;     
+                            branch_o = 1'b1;
+                            imm_o = B_imm[11:0];
+                        end
+                        default: begin
+                            branch_o = 1'b0;
+                        end
+                    endcase
                 end
-                
-                7'b1101111: begin  // J (JAL con rd = x0)
+                7'b1101111: begin  // JAL
                     jump_o     = 1'b1;    // Activar salto incondicional
                     //pc_write_o = 1'b1;    // Escribir en el PC la nueva dirección
                 end
-                
-                7'b0000011: begin  // LW (load word) (MAL)
-                    alu_op_o    = 3'b000;  // ADD (rs1 + offset)
-                    reg_write_o = 1'b1;   
-                    mem_read_o  = 1'b1;   
-                    mem_to_reg_o = 1'b1;  
-                    imm_o       = S_imm;  
-                end
-                7'b0110011: begin // SLL
+                7'b1100111: begin // JALR
                     
                 end
-
                 default: begin
                 end
             endcase

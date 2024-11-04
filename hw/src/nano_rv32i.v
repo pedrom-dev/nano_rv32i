@@ -23,7 +23,9 @@ module nano_rv32i (
     wire        mem_read_w;         // Señal que indica si se debe leer desde la memoria de datos | DECODER -> MEMORY INTERFACE
     wire        mem_write_w;        // Señal que indica si se debe escribir en la memoria de datos | DECODER -> MEMORY INTERFACE
     wire        mem_to_reg_w;       // Señal que indica si el valor a escribir en el registro proviene de la memoria (LOAD) | DECODER -> REGFILE
-    
+    wire        opcode_w;
+    wire        take_branch_w;
+
     // Interfaz del archivo de registros    
     wire [31:0] rs1_data_w;         // Valor del registro fuente 1 (rs1)
     wire [31:0] rs2_data_w;         // Valor del registro fuente 2 (rs2)
@@ -46,24 +48,54 @@ module nano_rv32i (
     wire [11:0] imm_w;              // Valor inmediato de 12 bits decodificado de la instrucción
 
     reg [31:0] pc_r; // Registro para manejar el Program Counter (PC)
+    reg [31:0] pc_4;
+    reg [31:0] pc_j;
+ 
+    // always @(posedge clk_i) begin
+        // if (!rst_n_i) begin
+        //     pc_r <= 32'b0;
+
+        // end else if (pc_write_w) begin
+        //     if (jump_w) begin
+        //         pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto incondicional
+
+    //         end else if (branch_w && zero_w) begin
+    //             pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto condicional (beq)
+
+    //         end else begin
+    //             pc_r <= pc_r + 4;  // Siguiente instrucción
+                
+    //         end
+    //     end
+    // end
 
 
-    always @(posedge clk_i) begin
-        if (!rst_n_i) begin
-            pc_r <= 32'b0;  // Inicialización del PC
-            stall_pc <= 1'b0;
-            stall_count <= 2'b0;
-        end else if (pc_write_w) begin
-            if (jump_w) begin
-                pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto incondicional
-            end else if (branch_w && zero_w) begin
-                pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto condicional (beq)
-            end else begin
-                if
-                pc_r <= pc_r + 4;  // Siguiente instrucción
+
+    always@(posedge clk_i) begin
+        if(!rst_n_i) begin
+            pc_r <= 32'b0;
+
+        end else if(pc_write_w) begin
+            pc_4 <= pc_r + 4;
+
+            if (branch_w) begin
+                pc_j <= pc_j + {{20{imm_w[11]}}, imm_w}; //Comprobar este inmediato
+
             end
         end
     end
+
+    always @(*) begin
+        if (take_branch_w) begin
+            pc_r = pc_j;
+
+        end else
+            pc_r = pc_4;
+
+        endif
+    end
+
+    
 
     decoder decoder_inst (
         .instr_i(i_data_i),
@@ -81,10 +113,12 @@ module nano_rv32i (
         .rd_o(rd_w),
         .imm_o(imm_w),
         .funct3_o(funct3_w),
-        .ls_o(ls_w)
-    );
+        .ls_o(ls_w),
+        .opcode_o(opcode_w)
 
-    regfile regfile_inst (
+        );
+        
+        regfile regfile_inst (
         .clk_i(clk_i),
         .rst_n_i(rst_n_i),
         .reg_write_i(reg_write_w),
@@ -113,6 +147,15 @@ module nano_rv32i (
         .mem_write_i(mem_write_w),
         .d_data_o(read_data_w)
     );
+
+    compare compare_inst (
+        .branch_i(),
+        .zero_i(zero_w),
+        .alu_result_i(alu_result_w),
+        .funct3_i(funct3_w),
+        .take_branch_o(take_branch_w)
+    );
+    
 
     //assign d_addr_o = alu_result_w; //???????
     //assign d_rd_o = reg_write_w; // ??????
