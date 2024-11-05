@@ -51,23 +51,22 @@ module nano_rv32i (
     reg [31:0] pc_4;
     reg [31:0] pc_j;
  
-    // always @(posedge clk_i) begin
-        // if (!rst_n_i) begin
-        //     pc_r <= 32'b0;
+    always @(posedge clk_i) begin
+        if (!rst_n_i) begin
 
-        // end else if (pc_write_w) begin
-        //     if (jump_w) begin
-        //         pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto incondicional
+        end else if (pc_write_w) begin
+            if (jump_w) begin
+                pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto incondicional
 
-    //         end else if (branch_w && zero_w) begin
-    //             pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto condicional (beq)
+            end else if (branch_w && zero_w) begin
+                pc_r <= pc_r + {{20{imm_w[11]}}, imm_w};  // Salto condicional (beq)
 
-    //         end else begin
-    //             pc_r <= pc_r + 4;  // Siguiente instrucción
+            end else begin
+                pc_r <= pc_r + 4;  // Siguiente instrucción
                 
-    //         end
-    //     end
-    // end
+            end
+        end
+    end
 
 
 
@@ -86,13 +85,18 @@ module nano_rv32i (
     end
 
     always @(*) begin
-        if (take_branch_w) begin
-            pc_r = pc_j;
-
-        end else
-            pc_r = pc_4;
-
-        endif
+        if (branch_w) begin
+            if (take_branch_w) begin
+                pc_r = pc_r + {{20{imm_w[11]}}, imm_w}; //Comprobar este inmediato
+    
+            end else
+                pc_r = pc_r + 4;
+    
+            endif    
+        end else if (ls_w & funct3_w ==) begin
+            
+        end
+        
     end
 
     
