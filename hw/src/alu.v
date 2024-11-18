@@ -7,6 +7,7 @@ module alu (
 );
 
     always @(*) begin
+        result_o = 32'b0;
         case (alu_op_i) 
             4'b0000: result_o = a_i + b_i;   // ADD
             4'b0001: result_o = a_i - b_i;   // SUB
@@ -18,7 +19,7 @@ module alu (
             4'b0111: result_o = $signed(a_i) >>> b_i[4:0]; // SRA (Shift Right Arithmetic)
             4'b1000: result_o = ($signed(a_i) < $signed(b_i)) ? 32'b1 : 32'b0;
             4'b1001: result_o = a_i < b_i ? 32'b1 : 32'b0;
-            default: result_o <= 32'b0;      // Valor por defecto
+            default: ;
         endcase
 
         // Asignar la señal de zero
