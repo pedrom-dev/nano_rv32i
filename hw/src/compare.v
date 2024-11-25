@@ -4,7 +4,8 @@ module compare (
     input wire alu_result_i,
     input wire [3:0] funct3_i,
     
-    output wire take_branch_o
+    output reg take_branch_o
+    
 );
 
     always @(*) begin

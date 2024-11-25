@@ -1,9 +1,11 @@
 module alu (
-    input [31:0] a_i,          // Primer operando
-    input [31:0] b_i,          // Segundo operando
-    input [3:0] alu_op_i,      // Operación a realizar
-    output reg [31:0] result_o, // Resultado de la operación
-    output reg zero_o          // Señal de zero (1 si el resultado es 0)
+    input [31:0] a_i,         
+    input [31:0] b_i,          
+    input [3:0] alu_op_i,      
+    
+    output reg [31:0] result_o, 
+    output reg zero_o
+
 );
 
     always @(*) begin

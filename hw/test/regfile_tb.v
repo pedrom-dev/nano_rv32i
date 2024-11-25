@@ -69,18 +69,5 @@ module tb_regfile;
         #50 $finish;
     end
 
-    // Monitor de estado del banco de registros
-    always @(posedge clk_i) begin
-        if (!rst_n_i) begin
-            $display("Reseteando el banco de registros...");
-        end else begin
-            $display("Banco de registros en el ciclo de reloj actual:");
-            for (int i = 0; i < 32; i = i + 1) begin
-                $display("Registro [%0d] = %h", i, uut.regfile[i]);
-            end
-            $display("---------------------------------------------");
-        end
-    end
-
 endmodule
 

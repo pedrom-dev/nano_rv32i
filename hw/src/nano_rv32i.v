@@ -12,6 +12,7 @@ module nano_rv32i (
     
     output reg [3:0]  d_rd_o,       // Señal para activar la lectura de datos desde la memoria
     output reg [3:0]  d_we_o        // Señal de habilitación de escritura de memoria  
+    
 );
 
     wire [3:0]  alu_op_w;           // Operación que la ALU debe realizar (add, sub, etc.) | DECODER -> ALU
@@ -19,12 +20,12 @@ module nano_rv32i (
     wire        reg_write_w;        // Señal que indica si se debe escribir en un registro | DECODER -> REGFILE
     wire        branch_w;           // Señal que indica si se está ejecutando una instrucción de salto condicional (branch) | DECODER -> PC CONTROL
     wire        jump_w;             // Señal que indica si se está ejecutando una instrucción de salto incondicional (jump) | DECODER -> PC CONTROL
+    wire        jalr_w;
     wire        pc_write_w;         // Señal que permite escribir una nueva dirección en el Program Counter (PC) | DECODER -> PC CONTROL
     wire        use_imm_w;          
     wire        mem_read_w;         // Señal que indica si se debe leer desde la memoria de datos | DECODER -> MEMORY INTERFACE
     wire        mem_write_w;        // Señal que indica si se debe escribir en la memoria de datos | DECODER -> MEMORY INTERFACE
     wire        mem_to_reg_w;       // Señal que indica si el valor a escribir en el registro proviene de la memoria (LOAD) | DECODER -> REGFILE
-    //wire        opcode_w;
     wire        take_branch_w;
 
     // Interfaz del archivo de registros    
@@ -40,7 +41,7 @@ module nano_rv32i (
 
     //LSU's interface
     wire ls_w;
-    wire d_we_w;
+    wire [3:0] d_we_w;
 
     // Interfaz de memoria de datos (Lectura y Escritura)
     wire [31:0] write_data_w;       // Dato que se va a escribir en el registro de destino (puede provenir de la ALU o de la memoria)
@@ -52,7 +53,7 @@ module nano_rv32i (
 
     reg [31:0] pc_r; // Registro para manejar el Program Counter (PC)    
     wire stall_w;
-    reg load_ready_w;
+    wire load_ready_w;
  
     always @(posedge clk_i or negedge rst_n_i) begin
         if (!rst_n_i) begin
@@ -60,8 +61,8 @@ module nano_rv32i (
 
         end else if (pc_write_w) begin
             if (jump_w) begin
-                if (alu_op == 4'b0000) begin  
-                    pc_r <= alu_result;      
+                if (jalr_w) begin  
+                    pc_r <= alu_result_w;      
 
                 end else begin              
                     pc_r <= pc_r + {{18{imm_w[12]}}, imm_w};
@@ -98,7 +99,8 @@ module nano_rv32i (
         .rd_o(rd_w),
         .imm_o(imm_w),
         .funct3_o(funct3_w),
-        .ls_o(ls_w)
+        .ls_o(ls_w),
+        .jalr_o(jalr_w)
 
     );
         
@@ -124,6 +126,7 @@ module nano_rv32i (
     );
 
     lsu lsu_inst (
+        .rst_n_i(rst_n_i),
         .ls_i(ls_w),
         .funct3_i(funct3_w[1:0]),
         .d_addr_i(alu_result_w[1:0]),
@@ -155,9 +158,7 @@ module nano_rv32i (
         d_rd_o <= d_rd_w;
     end
 
-    assign write_data_w = mem_to_reg_w ? d_data_i : alu_result_w;
-
-    assign write_data_w = jump_w ? pc_w + 4 : 
+    assign write_data_w = jump_w ? pc_r + 4 :
                           mem_to_reg_w ? d_data_i : 
                           alu_result_w;
 

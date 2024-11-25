@@ -11,6 +11,7 @@ module regfile (
     
     output [31:0] rs1_data_o,  // Datos leídos del registro fuente 1
     output [31:0] rs2_data_o   // Datos leídos del registro fuente 2
+
 );
 
     // ------------------------
@@ -27,10 +28,12 @@ module regfile (
         if (!rst_n_i) begin
             for (i = 0; i < 32; i = i + 1) begin
                 regfile[i] <= 32'h0000_0000;
+                
             end        
         end else begin
             if (enable_i == 1 && (reg_write_i && rd_i != 0)) begin
                 regfile[rd_i] <= write_data_i;  // Escritura en el registro destino, excepto x0
+                
             end
         end
     end

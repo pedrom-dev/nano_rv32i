@@ -5,6 +5,7 @@ module decoder (
     output reg reg_write_o,    // Señal para escribir en registros
     output reg branch_o,       // Señal de salto condicional
     output reg jump_o,         // Señal de salto incondicional
+    output reg jalr_o,
     output reg pc_write_o,     // Señal para escribir en el PC
     output reg mem_read_o,     // Señal de lectura de memoria
     output reg mem_write_o,    // Señal de escritura en memoria
@@ -18,6 +19,7 @@ module decoder (
     output reg [12:0] imm_o,   // Inmediato de 12 bits
     output [2:0] funct3_o
     //output [6:0] opcode_o  
+
 );
 
     // Instruction fields
@@ -27,7 +29,7 @@ module decoder (
     assign rs1_o = instr_i[19:15];       // Registro fuente 1
     assign rs2_o = instr_i[24:20];       // Registro fuente 2
     wire  [12:0] I_imm = {1'b0, instr_i[31:20]};       // Inmediato de 12 bits extendido
-    wire  [12:0] S_imm = {1'b0, instr_i[31:25], instr_i[11:7]};  // Inmediato de 12 bits para SW extendido
+    wire  [12:0] S_imm = {instr_i[31:25], instr_i[11:7]};  // Inmediato de 12 bits para SW extendido
     wire  [12:0] B_imm = {instr_i[31], instr_i[7], instr_i[30:25], instr_i[11:8], 1'b0};  // Inmediato de 13 bits para BEQ
     wire [20:0] J_imm = {instr_i[31], instr_i[19:12], instr_i[20], instr_i[30:21], 1'b0};
 
@@ -45,6 +47,7 @@ module decoder (
         imm_o        = I_imm;
         use_imm_o    = 1'b0;
         ls_o         = 1'b0;
+        jalr_o       = 1'b0;
 
         case (opcode_o)
             7'b0010011: begin  // Tipo I
@@ -80,7 +83,7 @@ module decoder (
                 mem_write_o = 1'b1;
                 imm_o       = S_imm;
                 ls_o        = 1'b1;
-                use_imm_w = 1'b1;
+                use_imm_o = 1'b1;
             end
             7'b0000011: begin  // Tipo L (Load)
                 alu_op_o     = 4'b0000;
@@ -113,6 +116,7 @@ module decoder (
             end
             7'b1100111: begin  // JALR
                 jump_o = 1'b1;
+                jalr_o = 1'b1;
                 alu_op_o = 3'b000;
                 use_imm_o = 1'b1;
                 imm_o = J_imm;
