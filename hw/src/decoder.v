@@ -1,5 +1,6 @@
 module decoder (
     input [31:0] instr_i,      // Registro de instrucción de 32 bits
+    input wire load_ready_i,
     
     output reg [3:0] alu_op_o, // Señal de operación de la ALU
     output reg reg_write_o,    // Señal para escribir en registros
@@ -18,7 +19,7 @@ module decoder (
     output [4:0] rd_o,         // Registro destino
     output reg [12:0] imm_o,   // Inmediato de 12 bits
     output [2:0] funct3_o
-    //output [6:0] opcode_o  
+ 
 
 );
 
@@ -36,7 +37,7 @@ module decoder (
     wire  [6:0]  funct7 = instr_i[31:25];     // Campo funct7 para identificar instrucciones R-type
 
     always @(*) begin
-        alu_op_o     = 4'bxxxx;
+        alu_op_o     = 4'bxxxx; // MIRAR
         reg_write_o  = 1'b0;    
         branch_o     = 1'b0;
         jump_o       = 1'b0;  
@@ -93,6 +94,11 @@ module decoder (
                 imm_o        = I_imm;
                 use_imm_o    = 1'b1;
                 ls_o         = 1'b1;
+                
+                if(load_ready_i) begin //MIRAR
+                    ls_o         = 1'b0;
+                    mem_read_o   = 1'b1;
+                end
             end
             // ------------------------
             7'b1100011: begin  // Tipo B (Branch)
@@ -100,11 +106,11 @@ module decoder (
                 imm_o    = B_imm;
                 case (funct3_o)
                     3'b000: alu_op_o = 4'b0001; // BEQ
-                    3'b001: alu_op_o = 4'b0010; // BNE
-                    3'b100: alu_op_o = 4'b0011; // BLT
-                    3'b101: alu_op_o = 4'b0100; // BGE
-                    3'b110: alu_op_o = 4'b0101; // BLTU
-                    3'b111: alu_op_o = 4'b0110; // BGEU
+                    3'b001: alu_op_o = 4'b0001; // BNE
+                    3'b100: alu_op_o = 4'b1000; // BLT
+                    3'b101: alu_op_o = 4'b1011; // BGE
+                    3'b110: alu_op_o = 4'b1001; // BLTU
+                    3'b111: alu_op_o = 4'b1010; // BGEU
                     default: ;
                 endcase
             end
