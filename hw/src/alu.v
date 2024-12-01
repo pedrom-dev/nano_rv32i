@@ -21,6 +21,8 @@ module alu (
             4'b0111: result_o = $signed(a_i) >>> b_i[4:0]; // SRA (Shift Right Arithmetic)
             4'b1000: result_o = ($signed(a_i) < $signed(b_i)) ? 32'b1 : 32'b0;
             4'b1001: result_o = a_i < b_i ? 32'b1 : 32'b0;
+            4'b1010: result_o = a_i >= b_i ? 32'b1 : 32'b0; 
+            4'b1011: result_o = ($signed(a_i) >= $signed(b_i)) ? 32'b1 : 32'b0; 
             default: ;
         endcase
 
