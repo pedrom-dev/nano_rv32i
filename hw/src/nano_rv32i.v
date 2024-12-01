@@ -45,7 +45,7 @@ module nano_rv32i (
 
     // Interfaz de memoria de datos (Lectura y Escritura)
     wire [31:0] write_data_w;       // Dato que se va a escribir en el registro de destino (puede provenir de la ALU o de la memoria)
-    //wire [31:0] read_data_w;        // Dato leído desde la memoria de datos
+    //wire [31:0] read_data_w;     // Dato leído desde la memoria de datos
     wire [3:0] d_strb_w;
     
     // Señales de inmediato (Immediate)
@@ -100,7 +100,8 @@ module nano_rv32i (
         .imm_o(imm_w),
         .funct3_o(funct3_w),
         .ls_o(ls_w),
-        .jalr_o(jalr_w)
+        .jalr_o(jalr_w),
+        .load_ready_i(load_ready_w)
 
     );
         
@@ -127,6 +128,7 @@ module nano_rv32i (
 
     lsu lsu_inst (
         .rst_n_i(rst_n_i),
+        .clk_i(clk_i),
         .ls_i(ls_w),
         .funct3_i(funct3_w[1:0]),
         .d_addr_i(alu_result_w[1:0]),
@@ -145,10 +147,9 @@ module nano_rv32i (
         .take_branch_o(take_branch_w)
     );
         
-    // ------------------------
-    // -- completar
+
     assign stall_w = (ls_w && mem_read_w) && !load_ready_w;
-    // ------------------------
+    
 
     always @(*) begin
         d_addr_o <= alu_result_w;
