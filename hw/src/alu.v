@@ -26,7 +26,7 @@ module alu (
             default: ;
         endcase
 
-        // Asignar la señal de zero
+        // Assign the zero signal 
         zero_o = (result_o == 32'b0) ? 1'b1 : 1'b0;
     end
 endmodule
