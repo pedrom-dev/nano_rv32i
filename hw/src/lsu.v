@@ -1,7 +1,8 @@
 module lsu (
     input wire rst_n_i,
+    input wire clk_i,
 
-    input wire ls_i,        
+    input wire ls_i,
     input wire [1:0] funct3_i,
     input wire [1:0] d_addr_i,
     input wire mem_write_i,
@@ -61,12 +62,13 @@ module lsu (
         end
     end
 
-    always @(*) begin 
+    always @(posedge clk_i) begin 
         if (!rst_n_i) begin
             load_ready_o <= 1'b0;
         end else begin
             if (ls_i && mem_read_i) begin
                 load_ready_o <= 1'b1;
+                
             end else begin
                 load_ready_o <= 1'b0;
 
