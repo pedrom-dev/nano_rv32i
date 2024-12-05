@@ -26,6 +26,7 @@ module nano_rv32i (
     wire        mem_write_w;        // Data memory write
     wire        mem_to_reg_w;       // Write memory value to register
     wire        take_branch_w;      // Branch taken signal
+    wire [3:0]  d_rd_w;             // Data memory read enable signal 
 
     // Register file interface
     wire [31:0] rs1_data_w;         // Register source 1 data
@@ -33,6 +34,7 @@ module nano_rv32i (
     wire [4:0]  rs1_w;              // Register source 1 address
     wire [4:0]  rs2_w;              // Register source 2 address
     wire [4:0]  rd_w;               // Destination register address
+    wire [31:0] write_data_w;       // Data to be wrote
 
     // ALU interface
     wire [31:0] alu_result_w;       // ALU result
@@ -126,7 +128,6 @@ module nano_rv32i (
     compare compare_inst (
         .branch_i(branch_w),
         .zero_i(zero_w),
-        .alu_result_i(alu_result_w),
         .funct3_i(funct3_w),
         .take_branch_o(take_branch_w)
     );
@@ -135,8 +136,7 @@ module nano_rv32i (
     
     always @(*) begin
         d_addr_o <= alu_result_w;
-        d_data_o <= rs2_data_w; 
-        d_rd_o <= reg_write_w;
+        d_data_o <= rs2_data_w;
         d_we_o <= d_we_w;
         d_rd_o <= d_rd_w;
     end
