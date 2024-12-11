@@ -16,6 +16,7 @@ module lsu (
 
     always @(*) begin
         d_we_o = 4'b0000; // No action
+        d_rd_o = 4'b0000;
         if (mem_write_i) begin
             case (funct3_i[1:0])
                 3'b00: begin // SB 
