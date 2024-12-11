@@ -14,42 +14,42 @@ module nano_rv32i (
     output reg [3:0]  d_we_o        // Data memory write enable
 );
 
-    wire [3:0]  alu_op_w;           // ALU operation
-    wire [2:0]  funct3_w;           // Funct3 field
-    wire        reg_write_w;        // Register write enable
-    wire        branch_w;           // Conditional branch
-    wire        jump_w;             // Unconditional jump
-    wire        jalr_w;             // JALR jump
-    wire        pc_write_w;         // Program Counter write enable
-    wire        use_imm_w;          // Immediate operand selection
-    wire        mem_read_w;         // Data memory read
-    wire        mem_write_w;        // Data memory write
-    wire        mem_to_reg_w;       // Write memory value to register
-    wire        take_branch_w;      // Branch taken signal
-    wire [3:0]  d_rd_w;             // Data memory read enable signal 
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [3:0]  alu_op_w;           // ALU operation
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [2:0]  funct3_w;           // Funct3 field
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        reg_write_w;        // Register write enable
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        branch_w;           // Conditional branch
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        jump_w;             // Unconditional jump
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        jalr_w;             // JALR jump
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        pc_write_w;         // Program Counter write enable
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        use_imm_w;          // Immediate operand selection
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        mem_read_w;         // Data memory read
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        mem_write_w;        // Data memory write
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        mem_to_reg_w;       // Write memory value to register
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        take_branch_w;      // Branch taken signal
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [3:0]  d_rd_w;             // Data memory read enable signal 
 
     // Register file interface
-    wire [31:0] rs1_data_w;         // Register source 1 data
-    wire [31:0] rs2_data_w;         // Register source 2 data
-    wire [4:0]  rs1_w;              // Register source 1 address
-    wire [4:0]  rs2_w;              // Register source 2 address
-    wire [4:0]  rd_w;               // Destination register address
-    wire [31:0] write_data_w;       // Data to be wrote
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [31:0] rs1_data_w;         // Register source 1 data
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [31:0] rs2_data_w;         // Register source 2 data
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [4:0]  rs1_w;              // Register source 1 address
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [4:0]  rs2_w;              // Register source 2 address
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [4:0]  rd_w;               // Destination register address
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [31:0] write_data_w;       // Data to be wrote
 
     // ALU interface
-    wire [31:0] alu_result_w;       // ALU result
-    wire        zero_w;             // ALU zero flag
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [31:0] alu_result_w;       // ALU result
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire        zero_w;             // ALU zero flag
 
     // LSU interface
-    wire ls_w;
-    wire [3:0] d_we_w;
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire ls_w;
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [3:0] d_we_w;
 
     // Immediate values
-    wire [12:0] imm_w;              // 12-bit immediate value
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire [12:0] imm_w;              // 12-bit immediate value
 
-    reg [31:0] pc_r;                // Program Counter
-    wire stall_w;                   // Stall signal
-    wire load_ready_w;              // Load ready signal
+    (* KEEP_HIERARCHY = "{TRUE}" *)reg [31:0] pc_r;                // Program Counter
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire stall_w;                   // Stall signal
+    (* KEEP_HIERARCHY = "{TRUE}" *)wire load_ready_w;              // Load ready signal
  
     always @(posedge clk_i or negedge rst_n_i) begin
         if (!rst_n_i) begin
