@@ -82,6 +82,11 @@ module decoder (
                 imm_o       = S_imm;
                 ls_o        = 1'b1;
                 use_imm_o   = 1'b1;
+                
+                if(load_ready_i) begin 
+                    ls_o         = 1'b0;
+                    mem_write_o   = 1'b1;
+                end
             end
             7'b0000011: begin  // L-type (load)
                 alu_op_o     = 4'b0000;

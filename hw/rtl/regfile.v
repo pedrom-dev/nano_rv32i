@@ -1,6 +1,7 @@
 module regfile (
     input clk_i,               // Clock signal
     input rst_n_i,             // Reset signal
+    input rsta_busy_i,
 
     input enable_i,            // Enable signal    
     input reg_write_i,         // Register write control signal
@@ -11,6 +12,8 @@ module regfile (
     
     output [31:0] rs1_data_o,  // Data read from source register 1
     output [31:0] rs2_data_o   // Data read from source register 2
+    
+    
 );
 
     // Register file: 32 registers, 32-bit each
@@ -23,7 +26,7 @@ module regfile (
 
     // Write logic
     always @(posedge clk_i or negedge rst_n_i) begin
-        if (!rst_n_i) begin
+        if (!rst_n_i || rsta_busy_i) begin
             // Initialize all registers to 0 on reset
             for (i = 0; i < 32; i = i + 1) begin
                 regfile[i] <= 32'h0000_0000;
