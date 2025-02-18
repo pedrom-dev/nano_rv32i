@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="39.401 ns"></ZoomEndTime>
-      <Cursor1Time time="380.944 ns"></Cursor1Time>
+      <ZoomStartTime time="619.400 ns"></ZoomStartTime>
+      <ZoomEndTime time="723.869 ns"></ZoomEndTime>
+      <Cursor1Time time="952.308 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="205"></NameColumnWidth>
-      <ValueColumnWidth column_width="119"></ValueColumnWidth>
+      <NameColumnWidth column_width="219"></NameColumnWidth>
+      <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="48" />
+   <WVObjectSize size="53" />
    <wvobject type="group" fp_name="group550">
       <obj_property name="label">rom_mem</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -228,5 +228,27 @@
    <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/xlconstant_2_dout">
       <obj_property name="ElementShortName">xlconstant_2_dout[0:0]</obj_property>
       <obj_property name="ObjectShortName">xlconstant_2_dout[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/gpio_io_i">
+      <obj_property name="ElementShortName">gpio_io_i[15:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio_io_i[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/gpio_io_o">
+      <obj_property name="ElementShortName">gpio_io_o[15:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio_io_o[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/gpio_io_t">
+      <obj_property name="ElementShortName">gpio_io_t[15:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio_io_t[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/clk_i">
+      <obj_property name="ElementShortName">clk_i</obj_property>
+      <obj_property name="ObjectShortName">clk_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/i_data_i">
+      <obj_property name="ElementShortName">i_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_data_i[31:0]</obj_property>
    </wvobject>
 </wave_config>
