@@ -30,7 +30,8 @@ module lsu (
     output reg         s_axi_rready_o,
     input wire          s_axi_bvalid_i,
     output wire        is_mmio_o,
-    input wire          s_axi_arready_i
+    input wire          s_axi_arready_i,
+    output reg          s_axi_bready_o
 );
     
     wire is_mmio;
@@ -47,15 +48,20 @@ module lsu (
         s_axi_araddr_o = 32'b0;
         s_axi_arvalid_o = 1'b0;
         s_axi_rready_o = 1'b0;
+        s_axi_bready_o = 1'b0;
         
         // Address decoding for AXI GPIO (mapped to 0x3XXXXXXX)
         if (d_addr_i[31:24] == 8'h30) begin 
             if (mem_write_i) begin
                 // AXI Lite write logic for GPIO
-                s_axi_awaddr_o = d_addr_i;       // Map memory address to AXI write address
+                s_axi_awaddr_o = d_addr_i;      // Map memory address to AXI write address
                 s_axi_awvalid_o = 1'b1;         // Indicate valid address for AXI write
                 s_axi_wdata_o = d_data_i;       // Map memory write data to AXI write data
                 s_axi_wvalid_o = 1'b1;          // Indicate valid data for AXI write
+                
+                if (s_axi_bvalid_i) begin
+                    s_axi_bready_o = 1;
+                end
             end else if (mem_read_i) begin
                 s_axi_araddr_o = d_addr_i; 
                 s_axi_arvalid_o = 1'b1;         

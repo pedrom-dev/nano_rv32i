@@ -29,7 +29,8 @@ module nano_rv32i (
     input wire        s_axi_arready_i,
     input wire [31:0]  s_axi_rdata_i,
     output wire        s_axi_rready_o,
-    input wire         s_axi_bvalid_i
+    input wire         s_axi_bvalid_i,
+    output wire        s_axi_bready_o
 );
 
     // Internal signals
@@ -67,12 +68,13 @@ module nano_rv32i (
     (* KEEP_HIERARCHY = "{TRUE}" *)wire [31:0] s_axi_wdata_w;      // Internal AXI write data
     (* KEEP_HIERARCHY = "{TRUE}" *)wire s_axi_wvalid_w;            // Internal AXI write data valid
     (* KEEP_HIERARCHY = "{TRUE}" *)wire s_axi_rvalid_w;
-    
+   
     wire [31:0] s_axi_araddr_w;
     wire         s_axi_arvalid_w;
     wire [31:0]  s_axi_rdata_w;
     wire        s_axi_rready_w;
-
+    wire        s_axi_bready_w;
+    
     // Immediate values
     (* KEEP_HIERARCHY = "{TRUE}" *)wire [12:0] imm_w;              // 12-bit immediate value
 
@@ -97,7 +99,7 @@ module nano_rv32i (
 
     always @(*) begin
         i_addr_o <= pc_r;
-        i_rd_o <= !stall_w;
+        i_rd_o <= 1;
     end
     
     decoder decoder_inst (
@@ -170,7 +172,8 @@ module nano_rv32i (
         .s_axi_rready_o(s_axi_rready_w),
         .s_axi_bvalid_i(s_axi_bvalid_w),
         .is_mmio_o(is_mmio_w),
-        .s_axi_arready_i(s_axi_arready_w)
+        .s_axi_arready_i(s_axi_arready_w),
+        .s_axi_bready_o(s_axi_bready_w)
     );
 
     compare compare_inst (
@@ -201,7 +204,8 @@ module nano_rv32i (
     assign s_axi_rdata_w = s_axi_rdata_i;
     assign s_axi_rready_o = s_axi_rready_w;
     assign s_axi_bvalid_w = s_axi_bvalid_i;
-    assign s_axi_arready_i = s_axi_arready_w;
+    assign s_axi_arready_w = s_axi_arready_i;
+    assign s_axi_bready_o = s_axi_bready_w;
     
     assign write_data_w = jump_w ? pc_r + 4 :
                           mem_to_reg_w ? d_data_i : 

@@ -5,11 +5,12 @@
 ## Note: As the Nexys 4 DDR was rebranded to the Nexys A7 with no substantial changes, this XDC file will also work for the Nexys 4 DDR.
 
 ## Clock signal
-set_property -dict { PACKAGE_PIN N17 IOSTANDARD LVCMOS33 } [get_ports { clk_i_0 }]; #IO_L12P_T1_MRCC_35 Sch=clk100mhz
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk_i_0_IBUF]
+set_property -dict { PACKAGE_PIN E3 IOSTANDARD LVCMOS33 } [get_ports { clk_i_0 }]; #IO_L12P_T1_MRCC_35 Sch=clk100mhz
+#set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk_i_0_IBUF]
+create_clock -add -name sys_clk_pin -period 18.00 -waveform {0 5} [get_ports {clk_i_0}];
 
-set_property -dict { PACKAGE_PIN E3 IOSTANDARD LVCMOS33 } [get_ports { clk_2 }]; #IO_L12P_T1_MRCC_35 Sch=clk100mhz
-create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports {clk_2}];
+#set_property -dict { PACKAGE_PIN E3 IOSTANDARD LVCMOS33 } [get_ports { clk_2 }]; #IO_L12P_T1_MRCC_35 Sch=clk100mhz
+#create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports {clk_2}];
 
 ##Switches
 #set_property -dict { PACKAGE_PIN J15   IOSTANDARD LVCMOS33 } [get_ports { SW[0] }]; #IO_L24N_T3_RS0_15 Sch=sw[0]

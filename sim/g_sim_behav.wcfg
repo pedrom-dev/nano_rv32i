@@ -12,27 +12,212 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="619.400 ns"></ZoomStartTime>
-      <ZoomEndTime time="723.869 ns"></ZoomEndTime>
-      <Cursor1Time time="952.308 ns"></Cursor1Time>
+      <ZoomStartTime time="249.230 ns"></ZoomStartTime>
+      <ZoomEndTime time="818.731 ns"></ZoomEndTime>
+      <Cursor1Time time="541.230 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="219"></NameColumnWidth>
-      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+      <NameColumnWidth column_width="257"></NameColumnWidth>
+      <ValueColumnWidth column_width="132"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="53" />
+   <WVObjectSize size="14" />
+   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/clk_i_0">
+      <obj_property name="ElementShortName">clk_i_0</obj_property>
+      <obj_property name="ObjectShortName">clk_i_0</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/rst_n_i">
+      <obj_property name="ElementShortName">rst_n_i</obj_property>
+      <obj_property name="ObjectShortName">rst_n_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/pc_r">
+      <obj_property name="ElementShortName">pc_r[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_r[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0/douta">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+   </wvobject>
    <wvobject type="group" fp_name="group550">
       <obj_property name="label">rom_mem</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0/clka">
+         <obj_property name="ElementShortName">clka</obj_property>
+         <obj_property name="ObjectShortName">clka</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0/rsta">
+         <obj_property name="ElementShortName">rsta</obj_property>
+         <obj_property name="ObjectShortName">rsta</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0/ena">
+         <obj_property name="ElementShortName">ena</obj_property>
+         <obj_property name="ObjectShortName">ena</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0/addra">
+         <obj_property name="ElementShortName">addra[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addra[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0/douta">
+         <obj_property name="ElementShortName">douta[31:0]</obj_property>
+         <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0/rsta_busy">
+         <obj_property name="ElementShortName">rsta_busy</obj_property>
+         <obj_property name="ObjectShortName">rsta_busy</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group4483">
+      <obj_property name="label">axi_gpio</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_aresetn">
+         <obj_property name="ElementShortName">s_axi_aresetn</obj_property>
+         <obj_property name="ObjectShortName">s_axi_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_awaddr">
+         <obj_property name="ElementShortName">s_axi_awaddr[8:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awaddr[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_awvalid">
+         <obj_property name="ElementShortName">s_axi_awvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_awready">
+         <obj_property name="ElementShortName">s_axi_awready</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_wdata">
+         <obj_property name="ElementShortName">s_axi_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_wvalid">
+         <obj_property name="ElementShortName">s_axi_wvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_wready">
+         <obj_property name="ElementShortName">s_axi_wready</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_wstrb">
+         <obj_property name="ElementShortName">s_axi_wstrb[3:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wstrb[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_bresp">
+         <obj_property name="ElementShortName">s_axi_bresp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_bresp[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_bvalid">
+         <obj_property name="ElementShortName">s_axi_bvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axi_bvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_bready">
+         <obj_property name="ElementShortName">s_axi_bready</obj_property>
+         <obj_property name="ObjectShortName">s_axi_bready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_araddr">
+         <obj_property name="ElementShortName">s_axi_araddr[8:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_araddr[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_arvalid">
+         <obj_property name="ElementShortName">s_axi_arvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axi_arvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_arready">
+         <obj_property name="ElementShortName">s_axi_arready</obj_property>
+         <obj_property name="ObjectShortName">s_axi_arready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_rdata">
+         <obj_property name="ElementShortName">s_axi_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_rresp">
+         <obj_property name="ElementShortName">s_axi_rresp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rresp[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_rvalid">
+         <obj_property name="ElementShortName">s_axi_rvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/s_axi_rready">
+         <obj_property name="ElementShortName">s_axi_rready</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/gpio_io_i">
+         <obj_property name="ElementShortName">gpio_io_i[15:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio_io_i[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/gpio_io_o">
+         <obj_property name="ElementShortName">gpio_io_o[15:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio_io_o[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/gpio_io_t">
+         <obj_property name="ElementShortName">gpio_io_t[15:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio_io_t[15:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group2077">
       <obj_property name="label">lsu</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/rsta_busy_i">
+         <obj_property name="ElementShortName">rsta_busy_i</obj_property>
+         <obj_property name="ObjectShortName">rsta_busy_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/is_mmio">
+         <obj_property name="ElementShortName">is_mmio</obj_property>
+         <obj_property name="ObjectShortName">is_mmio</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/ls_i">
+         <obj_property name="ElementShortName">ls_i</obj_property>
+         <obj_property name="ObjectShortName">ls_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/d_addr_i">
+         <obj_property name="ElementShortName">d_addr_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_addr_i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/d_data_i">
+         <obj_property name="ElementShortName">d_data_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_data_i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/load_ready_o">
+         <obj_property name="ElementShortName">load_ready_o</obj_property>
+         <obj_property name="ObjectShortName">load_ready_o</obj_property>
+      </wvobject>
       <wvobject type="group" fp_name="group2079">
          <obj_property name="label">read signals</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/d_rd_o">
+            <obj_property name="ElementShortName">d_rd_o[3:0]</obj_property>
+            <obj_property name="ObjectShortName">d_rd_o[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/mem_read_i">
+            <obj_property name="ElementShortName">mem_read_i</obj_property>
+            <obj_property name="ObjectShortName">mem_read_i</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_araddr_o">
+            <obj_property name="ElementShortName">s_axi_araddr_o[31:0]</obj_property>
+            <obj_property name="ObjectShortName">s_axi_araddr_o[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_arvalid_o">
+            <obj_property name="ElementShortName">s_axi_arvalid_o</obj_property>
+            <obj_property name="ObjectShortName">s_axi_arvalid_o</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_rdata_i">
+            <obj_property name="ElementShortName">s_axi_rdata_i[31:0]</obj_property>
+            <obj_property name="ObjectShortName">s_axi_rdata_i[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_rready_o">
+            <obj_property name="ElementShortName">s_axi_rready_o</obj_property>
+            <obj_property name="ObjectShortName">s_axi_rready_o</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_arready_i">
+            <obj_property name="ElementShortName">s_axi_arready_i</obj_property>
+            <obj_property name="ObjectShortName">s_axi_arready_i</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_rvalid_i">
+            <obj_property name="ElementShortName">s_axi_rvalid_i</obj_property>
+            <obj_property name="ObjectShortName">s_axi_rvalid_i</obj_property>
+         </wvobject>
       </wvobject>
       <wvobject fp_name="divider2216" type="divider">
          <obj_property name="label">divider</obj_property>
@@ -42,213 +227,695 @@
       <wvobject type="group" fp_name="group2080">
          <obj_property name="label">write signals</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/mem_write_i">
+            <obj_property name="ElementShortName">mem_write_i</obj_property>
+            <obj_property name="ObjectShortName">mem_write_i</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_awvalid_o">
+            <obj_property name="ElementShortName">s_axi_awvalid_o</obj_property>
+            <obj_property name="ObjectShortName">s_axi_awvalid_o</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_awaddr_o">
+            <obj_property name="ElementShortName">s_axi_awaddr_o[31:0]</obj_property>
+            <obj_property name="ObjectShortName">s_axi_awaddr_o[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_wvalid_o">
+            <obj_property name="ElementShortName">s_axi_wvalid_o</obj_property>
+            <obj_property name="ObjectShortName">s_axi_wvalid_o</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_wdata_o">
+            <obj_property name="ElementShortName">s_axi_wdata_o[31:0]</obj_property>
+            <obj_property name="ObjectShortName">s_axi_wdata_o[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_awready_i">
+            <obj_property name="ElementShortName">s_axi_awready_i</obj_property>
+            <obj_property name="ObjectShortName">s_axi_awready_i</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_wready_i">
+            <obj_property name="ElementShortName">s_axi_wready_i</obj_property>
+            <obj_property name="ObjectShortName">s_axi_wready_i</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_bvalid_i">
+            <obj_property name="ElementShortName">s_axi_bvalid_i</obj_property>
+            <obj_property name="ObjectShortName">s_axi_bvalid_i</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/d_we_o">
+            <obj_property name="ElementShortName">d_we_o[3:0]</obj_property>
+            <obj_property name="ObjectShortName">d_we_o[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_rready_o">
+            <obj_property name="ElementShortName">s_axi_rready_o</obj_property>
+            <obj_property name="ObjectShortName">s_axi_rready_o</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/s_axi_bready_o">
+            <obj_property name="ElementShortName">s_axi_bready_o</obj_property>
+            <obj_property name="ObjectShortName">s_axi_bready_o</obj_property>
+         </wvobject>
       </wvobject>
-   </wvobject>
-   <wvobject type="group" fp_name="group4483">
-      <obj_property name="label">axi_gpio</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/lsu_inst/funct3_i">
+         <obj_property name="ElementShortName">funct3_i[1:0]</obj_property>
+         <obj_property name="ObjectShortName">funct3_i[1:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group652">
       <obj_property name="label">regfile_signals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/clk_i">
+         <obj_property name="ElementShortName">clk_i</obj_property>
+         <obj_property name="ObjectShortName">clk_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/rst_n_i">
+         <obj_property name="ElementShortName">rst_n_i</obj_property>
+         <obj_property name="ObjectShortName">rst_n_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/rsta_busy_i">
+         <obj_property name="ElementShortName">rsta_busy_i</obj_property>
+         <obj_property name="ObjectShortName">rsta_busy_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/enable_i">
+         <obj_property name="ElementShortName">enable_i</obj_property>
+         <obj_property name="ObjectShortName">enable_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/reg_write_i">
+         <obj_property name="ElementShortName">reg_write_i</obj_property>
+         <obj_property name="ObjectShortName">reg_write_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/rs1_i">
+         <obj_property name="ElementShortName">rs1_i[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rs1_i[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/rs2_i">
+         <obj_property name="ElementShortName">rs2_i[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rs2_i[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/rd_i">
+         <obj_property name="ElementShortName">rd_i[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rd_i[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/write_data_i">
+         <obj_property name="ElementShortName">write_data_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_data_i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/rs1_data_o">
+         <obj_property name="ElementShortName">rs1_data_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rs1_data_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/rs2_data_o">
+         <obj_property name="ElementShortName">rs2_data_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rs2_data_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/i">
+         <obj_property name="ElementShortName">i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/regfile_inst/regfile">
+         <obj_property name="ElementShortName">regfile[31:0][31:0]</obj_property>
+         <obj_property name="ObjectShortName">regfile[31:0][31:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group1208">
       <obj_property name="label">core_signals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/rst_n_i">
+         <obj_property name="ElementShortName">rst_n_i</obj_property>
+         <obj_property name="ObjectShortName">rst_n_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/i_addr_o">
+         <obj_property name="ElementShortName">i_addr_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_addr_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/i_rd_o">
+         <obj_property name="ElementShortName">i_rd_o</obj_property>
+         <obj_property name="ObjectShortName">i_rd_o</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/i_data_i">
+         <obj_property name="ElementShortName">i_data_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_data_i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/d_addr_o">
+         <obj_property name="ElementShortName">d_addr_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_addr_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/d_data_i">
+         <obj_property name="ElementShortName">d_data_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_data_i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/d_data_o">
+         <obj_property name="ElementShortName">d_data_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_data_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/d_rd_o">
+         <obj_property name="ElementShortName">d_rd_o[3:0]</obj_property>
+         <obj_property name="ObjectShortName">d_rd_o[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/d_we_o">
+         <obj_property name="ElementShortName">d_we_o[3:0]</obj_property>
+         <obj_property name="ObjectShortName">d_we_o[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/rsta_busy_i">
+         <obj_property name="ElementShortName">rsta_busy_i</obj_property>
+         <obj_property name="ObjectShortName">rsta_busy_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_awaddr_o">
+         <obj_property name="ElementShortName">s_axi_awaddr_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awaddr_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_awvalid_o">
+         <obj_property name="ElementShortName">s_axi_awvalid_o</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awvalid_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_awready_i">
+         <obj_property name="ElementShortName">s_axi_awready_i</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awready_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_wdata_o">
+         <obj_property name="ElementShortName">s_axi_wdata_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wdata_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_wvalid_o">
+         <obj_property name="ElementShortName">s_axi_wvalid_o</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wvalid_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_wready_i">
+         <obj_property name="ElementShortName">s_axi_wready_i</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wready_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_rvalid_i">
+         <obj_property name="ElementShortName">s_axi_rvalid_i</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rvalid_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_araddr_o">
+         <obj_property name="ElementShortName">s_axi_araddr_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_araddr_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_arvalid_o">
+         <obj_property name="ElementShortName">s_axi_arvalid_o</obj_property>
+         <obj_property name="ObjectShortName">s_axi_arvalid_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_arready_i">
+         <obj_property name="ElementShortName">s_axi_arready_i</obj_property>
+         <obj_property name="ObjectShortName">s_axi_arready_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_rdata_i">
+         <obj_property name="ElementShortName">s_axi_rdata_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rdata_i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_rready_o">
+         <obj_property name="ElementShortName">s_axi_rready_o</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rready_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_bvalid_i">
+         <obj_property name="ElementShortName">s_axi_bvalid_i</obj_property>
+         <obj_property name="ObjectShortName">s_axi_bvalid_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/alu_op_w">
+         <obj_property name="ElementShortName">alu_op_w[3:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_op_w[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/funct3_w">
+         <obj_property name="ElementShortName">funct3_w[2:0]</obj_property>
+         <obj_property name="ObjectShortName">funct3_w[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/reg_write_w">
+         <obj_property name="ElementShortName">reg_write_w</obj_property>
+         <obj_property name="ObjectShortName">reg_write_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/branch_w">
+         <obj_property name="ElementShortName">branch_w</obj_property>
+         <obj_property name="ObjectShortName">branch_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/jump_w">
+         <obj_property name="ElementShortName">jump_w</obj_property>
+         <obj_property name="ObjectShortName">jump_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/jalr_w">
+         <obj_property name="ElementShortName">jalr_w</obj_property>
+         <obj_property name="ObjectShortName">jalr_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/pc_write_w">
+         <obj_property name="ElementShortName">pc_write_w</obj_property>
+         <obj_property name="ObjectShortName">pc_write_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/use_imm_w">
+         <obj_property name="ElementShortName">use_imm_w</obj_property>
+         <obj_property name="ObjectShortName">use_imm_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/mem_read_w">
+         <obj_property name="ElementShortName">mem_read_w</obj_property>
+         <obj_property name="ObjectShortName">mem_read_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/mem_write_w">
+         <obj_property name="ElementShortName">mem_write_w</obj_property>
+         <obj_property name="ObjectShortName">mem_write_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/mem_to_reg_w">
+         <obj_property name="ElementShortName">mem_to_reg_w</obj_property>
+         <obj_property name="ObjectShortName">mem_to_reg_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/take_branch_w">
+         <obj_property name="ElementShortName">take_branch_w</obj_property>
+         <obj_property name="ObjectShortName">take_branch_w</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/d_rd_w">
+         <obj_property name="ElementShortName">d_rd_w[3:0]</obj_property>
+         <obj_property name="ObjectShortName">d_rd_w[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/rs1_data_w">
+         <obj_property name="ElementShortName">rs1_data_w[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rs1_data_w[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/rs2_data_w">
+         <obj_property name="ElementShortName">rs2_data_w[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rs2_data_w[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/rs1_w">
+         <obj_property name="ElementShortName">rs1_w[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rs1_w[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/rs2_w">
+         <obj_property name="ElementShortName">rs2_w[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rs2_w[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/rd_w">
+         <obj_property name="ElementShortName">rd_w[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rd_w[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/write_data_w">
+         <obj_property name="ElementShortName">write_data_w[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_data_w[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/alu_result_w">
+         <obj_property name="ElementShortName">alu_result_w[31:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_result_w[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/zero_w">
+         <obj_property name="ElementShortName">zero_w</obj_property>
+         <obj_property name="ObjectShortName">zero_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/ls_w">
+         <obj_property name="ElementShortName">ls_w</obj_property>
+         <obj_property name="ObjectShortName">ls_w</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/d_we_w">
+         <obj_property name="ElementShortName">d_we_w[3:0]</obj_property>
+         <obj_property name="ObjectShortName">d_we_w[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_awaddr_w">
+         <obj_property name="ElementShortName">s_axi_awaddr_w[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awaddr_w[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_awvalid_w">
+         <obj_property name="ElementShortName">s_axi_awvalid_w</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awvalid_w</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_wdata_w">
+         <obj_property name="ElementShortName">s_axi_wdata_w[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wdata_w[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_wvalid_w">
+         <obj_property name="ElementShortName">s_axi_wvalid_w</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wvalid_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_rvalid_w">
+         <obj_property name="ElementShortName">s_axi_rvalid_w</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rvalid_w</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_araddr_w">
+         <obj_property name="ElementShortName">s_axi_araddr_w[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_araddr_w[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_arvalid_w">
+         <obj_property name="ElementShortName">s_axi_arvalid_w</obj_property>
+         <obj_property name="ObjectShortName">s_axi_arvalid_w</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_rdata_w">
+         <obj_property name="ElementShortName">s_axi_rdata_w[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rdata_w[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_rready_w">
+         <obj_property name="ElementShortName">s_axi_rready_w</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rready_w</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/imm_w">
+         <obj_property name="ElementShortName">imm_w[12:0]</obj_property>
+         <obj_property name="ObjectShortName">imm_w[12:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/pc_r">
+         <obj_property name="ElementShortName">pc_r[31:0]</obj_property>
+         <obj_property name="ObjectShortName">pc_r[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/stall_w">
+         <obj_property name="ElementShortName">stall_w</obj_property>
+         <obj_property name="ObjectShortName">stall_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/load_ready_w">
+         <obj_property name="ElementShortName">load_ready_w</obj_property>
+         <obj_property name="ObjectShortName">load_ready_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/rsta_busy_w">
+         <obj_property name="ElementShortName">rsta_busy_w</obj_property>
+         <obj_property name="ObjectShortName">rsta_busy_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_bvalid_w">
+         <obj_property name="ElementShortName">s_axi_bvalid_w</obj_property>
+         <obj_property name="ObjectShortName">s_axi_bvalid_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/is_mmio_w">
+         <obj_property name="ElementShortName">is_mmio_w</obj_property>
+         <obj_property name="ObjectShortName">is_mmio_w</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/s_axi_arready_w">
+         <obj_property name="ElementShortName">s_axi_arready_w</obj_property>
+         <obj_property name="ObjectShortName">s_axi_arready_w</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group549">
       <obj_property name="label">ram_mem</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1/clka">
+         <obj_property name="ElementShortName">clka</obj_property>
+         <obj_property name="ObjectShortName">clka</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1/rsta">
+         <obj_property name="ElementShortName">rsta</obj_property>
+         <obj_property name="ObjectShortName">rsta</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1/ena">
+         <obj_property name="ElementShortName">ena</obj_property>
+         <obj_property name="ObjectShortName">ena</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1/wea">
+         <obj_property name="ElementShortName">wea[3:0]</obj_property>
+         <obj_property name="ObjectShortName">wea[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1/addra">
+         <obj_property name="ElementShortName">addra[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addra[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1/dina">
+         <obj_property name="ElementShortName">dina[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1/douta">
+         <obj_property name="ElementShortName">douta[31:0]</obj_property>
+         <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1/rsta_busy">
+         <obj_property name="ElementShortName">rsta_busy</obj_property>
+         <obj_property name="ObjectShortName">rsta_busy</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group675">
       <obj_property name="label">top_module_signals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/clk_2">
+         <obj_property name="ElementShortName">clk_2</obj_property>
+         <obj_property name="ObjectShortName">clk_2</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/clk_i_0">
+         <obj_property name="ElementShortName">clk_i_0</obj_property>
+         <obj_property name="ObjectShortName">clk_i_0</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/gpio_io_o_0">
+         <obj_property name="ElementShortName">gpio_io_o_0[15:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio_io_o_0[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/gpio_io_t_0">
+         <obj_property name="ElementShortName">gpio_io_t_0[15:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio_io_t_0[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/rst_n_i_0">
+         <obj_property name="ElementShortName">rst_n_i_0</obj_property>
+         <obj_property name="ObjectShortName">rst_n_i_0</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_gpio_io_o">
+         <obj_property name="ElementShortName">axi_gpio_0_gpio_io_o[15:0]</obj_property>
+         <obj_property name="ObjectShortName">axi_gpio_0_gpio_io_o[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_gpio_io_t">
+         <obj_property name="ElementShortName">axi_gpio_0_gpio_io_t[15:0]</obj_property>
+         <obj_property name="ObjectShortName">axi_gpio_0_gpio_io_t[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_arready">
+         <obj_property name="ElementShortName">axi_gpio_0_s_axi_arready</obj_property>
+         <obj_property name="ObjectShortName">axi_gpio_0_s_axi_arready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_awready">
+         <obj_property name="ElementShortName">axi_gpio_0_s_axi_awready</obj_property>
+         <obj_property name="ObjectShortName">axi_gpio_0_s_axi_awready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_bvalid">
+         <obj_property name="ElementShortName">axi_gpio_0_s_axi_bvalid</obj_property>
+         <obj_property name="ObjectShortName">axi_gpio_0_s_axi_bvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_rdata">
+         <obj_property name="ElementShortName">axi_gpio_0_s_axi_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">axi_gpio_0_s_axi_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_rvalid">
+         <obj_property name="ElementShortName">axi_gpio_0_s_axi_rvalid</obj_property>
+         <obj_property name="ObjectShortName">axi_gpio_0_s_axi_rvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_wready">
+         <obj_property name="ElementShortName">axi_gpio_0_s_axi_wready</obj_property>
+         <obj_property name="ObjectShortName">axi_gpio_0_s_axi_wready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0_douta">
+         <obj_property name="ElementShortName">blk_mem_gen_0_douta[31:0]</obj_property>
+         <obj_property name="ObjectShortName">blk_mem_gen_0_douta[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0_rsta_busy">
+         <obj_property name="ElementShortName">blk_mem_gen_0_rsta_busy</obj_property>
+         <obj_property name="ObjectShortName">blk_mem_gen_0_rsta_busy</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1_douta">
+         <obj_property name="ElementShortName">blk_mem_gen_1_douta[31:0]</obj_property>
+         <obj_property name="ObjectShortName">blk_mem_gen_1_douta[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1_rsta_busy">
+         <obj_property name="ElementShortName">blk_mem_gen_1_rsta_busy</obj_property>
+         <obj_property name="ObjectShortName">blk_mem_gen_1_rsta_busy</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/clk_i_0_1">
+         <obj_property name="ElementShortName">clk_i_0_1</obj_property>
+         <obj_property name="ObjectShortName">clk_i_0_1</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_d_addr_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_d_addr_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_d_addr_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_d_data_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_d_data_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_d_data_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_d_we_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_d_we_o[3:0]</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_d_we_o[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_i_addr_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_i_addr_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_i_addr_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_i_rd_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_i_rd_o</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_i_rd_o</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_araddr_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_s_axi_araddr_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_araddr_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_arvalid_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_s_axi_arvalid_o</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_arvalid_o</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_awaddr_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_s_axi_awaddr_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_awaddr_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_awvalid_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_s_axi_awvalid_o</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_awvalid_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_rready_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_s_axi_rready_o</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_rready_o</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_wdata_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_s_axi_wdata_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_wdata_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_wvalid_o">
+         <obj_property name="ElementShortName">nano_rv32i_0_s_axi_wvalid_o</obj_property>
+         <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_wvalid_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/rst_n_i_0_1">
+         <obj_property name="ElementShortName">rst_n_i_0_1</obj_property>
+         <obj_property name="ObjectShortName">rst_n_i_0_1</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/util_vector_logic_0_Res">
+         <obj_property name="ElementShortName">util_vector_logic_0_Res[0:0]</obj_property>
+         <obj_property name="ObjectShortName">util_vector_logic_0_Res[0:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/util_vector_logic_1_Res">
+         <obj_property name="ElementShortName">util_vector_logic_1_Res[0:0]</obj_property>
+         <obj_property name="ObjectShortName">util_vector_logic_1_Res[0:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/xlconstant_0_dout">
+         <obj_property name="ElementShortName">xlconstant_0_dout[3:0]</obj_property>
+         <obj_property name="ObjectShortName">xlconstant_0_dout[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/xlconstant_1_dout">
+         <obj_property name="ElementShortName">xlconstant_1_dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">xlconstant_1_dout[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/xlconstant_2_dout">
+         <obj_property name="ElementShortName">xlconstant_2_dout[0:0]</obj_property>
+         <obj_property name="ObjectShortName">xlconstant_2_dout[0:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group651">
       <obj_property name="label">decoder_signals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/instr_i">
+         <obj_property name="ElementShortName">instr_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">instr_i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/load_ready_i">
+         <obj_property name="ElementShortName">load_ready_i</obj_property>
+         <obj_property name="ObjectShortName">load_ready_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/alu_op_o">
+         <obj_property name="ElementShortName">alu_op_o[3:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_op_o[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/reg_write_o">
+         <obj_property name="ElementShortName">reg_write_o</obj_property>
+         <obj_property name="ObjectShortName">reg_write_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/branch_o">
+         <obj_property name="ElementShortName">branch_o</obj_property>
+         <obj_property name="ObjectShortName">branch_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/jump_o">
+         <obj_property name="ElementShortName">jump_o</obj_property>
+         <obj_property name="ObjectShortName">jump_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/jalr_o">
+         <obj_property name="ElementShortName">jalr_o</obj_property>
+         <obj_property name="ObjectShortName">jalr_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/pc_write_o">
+         <obj_property name="ElementShortName">pc_write_o</obj_property>
+         <obj_property name="ObjectShortName">pc_write_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/mem_read_o">
+         <obj_property name="ElementShortName">mem_read_o</obj_property>
+         <obj_property name="ObjectShortName">mem_read_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/mem_write_o">
+         <obj_property name="ElementShortName">mem_write_o</obj_property>
+         <obj_property name="ObjectShortName">mem_write_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/mem_to_reg_o">
+         <obj_property name="ElementShortName">mem_to_reg_o</obj_property>
+         <obj_property name="ObjectShortName">mem_to_reg_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/use_imm_o">
+         <obj_property name="ElementShortName">use_imm_o</obj_property>
+         <obj_property name="ObjectShortName">use_imm_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/ls_o">
+         <obj_property name="ElementShortName">ls_o</obj_property>
+         <obj_property name="ObjectShortName">ls_o</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/rs1_o">
+         <obj_property name="ElementShortName">rs1_o[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rs1_o[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/rs2_o">
+         <obj_property name="ElementShortName">rs2_o[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rs2_o[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/rd_o">
+         <obj_property name="ElementShortName">rd_o[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rd_o[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/imm_o">
+         <obj_property name="ElementShortName">imm_o[12:0]</obj_property>
+         <obj_property name="ObjectShortName">imm_o[12:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/funct3_o">
+         <obj_property name="ElementShortName">funct3_o[2:0]</obj_property>
+         <obj_property name="ObjectShortName">funct3_o[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/opcode_o">
+         <obj_property name="ElementShortName">opcode_o[6:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode_o[6:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/I_imm">
+         <obj_property name="ElementShortName">I_imm[12:0]</obj_property>
+         <obj_property name="ObjectShortName">I_imm[12:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/S_imm">
+         <obj_property name="ElementShortName">S_imm[12:0]</obj_property>
+         <obj_property name="ObjectShortName">S_imm[12:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/B_imm">
+         <obj_property name="ElementShortName">B_imm[12:0]</obj_property>
+         <obj_property name="ObjectShortName">B_imm[12:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/J_imm">
+         <obj_property name="ElementShortName">J_imm[20:0]</obj_property>
+         <obj_property name="ObjectShortName">J_imm[20:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/decoder_inst/funct7">
+         <obj_property name="ElementShortName">funct7[6:0]</obj_property>
+         <obj_property name="ObjectShortName">funct7[6:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group653">
       <obj_property name="label">alu_signals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/alu_inst/a_i">
+         <obj_property name="ElementShortName">a_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">a_i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/alu_inst/b_i">
+         <obj_property name="ElementShortName">b_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">b_i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/alu_inst/alu_op_i">
+         <obj_property name="ElementShortName">alu_op_i[3:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_op_i[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/alu_inst/result_o">
+         <obj_property name="ElementShortName">result_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">result_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/alu_inst/zero_o">
+         <obj_property name="ElementShortName">zero_o</obj_property>
+         <obj_property name="ObjectShortName">zero_o</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group655">
       <obj_property name="label">compare_signals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/clk_2">
-      <obj_property name="ElementShortName">clk_2</obj_property>
-      <obj_property name="ObjectShortName">clk_2</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/clk_i_0">
-      <obj_property name="ElementShortName">clk_i_0</obj_property>
-      <obj_property name="ObjectShortName">clk_i_0</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/gpio_io_o_0">
-      <obj_property name="ElementShortName">gpio_io_o_0[15:0]</obj_property>
-      <obj_property name="ObjectShortName">gpio_io_o_0[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/gpio_io_t_0">
-      <obj_property name="ElementShortName">gpio_io_t_0[15:0]</obj_property>
-      <obj_property name="ObjectShortName">gpio_io_t_0[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/rst_n_i_0">
-      <obj_property name="ElementShortName">rst_n_i_0</obj_property>
-      <obj_property name="ObjectShortName">rst_n_i_0</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_gpio_io_o">
-      <obj_property name="ElementShortName">axi_gpio_0_gpio_io_o[15:0]</obj_property>
-      <obj_property name="ObjectShortName">axi_gpio_0_gpio_io_o[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_gpio_io_t">
-      <obj_property name="ElementShortName">axi_gpio_0_gpio_io_t[15:0]</obj_property>
-      <obj_property name="ObjectShortName">axi_gpio_0_gpio_io_t[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_arready">
-      <obj_property name="ElementShortName">axi_gpio_0_s_axi_arready</obj_property>
-      <obj_property name="ObjectShortName">axi_gpio_0_s_axi_arready</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_awready">
-      <obj_property name="ElementShortName">axi_gpio_0_s_axi_awready</obj_property>
-      <obj_property name="ObjectShortName">axi_gpio_0_s_axi_awready</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_bvalid">
-      <obj_property name="ElementShortName">axi_gpio_0_s_axi_bvalid</obj_property>
-      <obj_property name="ObjectShortName">axi_gpio_0_s_axi_bvalid</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_rdata">
-      <obj_property name="ElementShortName">axi_gpio_0_s_axi_rdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">axi_gpio_0_s_axi_rdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_rvalid">
-      <obj_property name="ElementShortName">axi_gpio_0_s_axi_rvalid</obj_property>
-      <obj_property name="ObjectShortName">axi_gpio_0_s_axi_rvalid</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0_s_axi_wready">
-      <obj_property name="ElementShortName">axi_gpio_0_s_axi_wready</obj_property>
-      <obj_property name="ObjectShortName">axi_gpio_0_s_axi_wready</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0_douta">
-      <obj_property name="ElementShortName">blk_mem_gen_0_douta[31:0]</obj_property>
-      <obj_property name="ObjectShortName">blk_mem_gen_0_douta[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_0_rsta_busy">
-      <obj_property name="ElementShortName">blk_mem_gen_0_rsta_busy</obj_property>
-      <obj_property name="ObjectShortName">blk_mem_gen_0_rsta_busy</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1_douta">
-      <obj_property name="ElementShortName">blk_mem_gen_1_douta[31:0]</obj_property>
-      <obj_property name="ObjectShortName">blk_mem_gen_1_douta[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/blk_mem_gen_1_rsta_busy">
-      <obj_property name="ElementShortName">blk_mem_gen_1_rsta_busy</obj_property>
-      <obj_property name="ObjectShortName">blk_mem_gen_1_rsta_busy</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/clk_2_1">
-      <obj_property name="ElementShortName">clk_2_1</obj_property>
-      <obj_property name="ObjectShortName">clk_2_1</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/clk_i_0_1">
-      <obj_property name="ElementShortName">clk_i_0_1</obj_property>
-      <obj_property name="ObjectShortName">clk_i_0_1</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_d_addr_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_d_addr_o[31:0]</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_d_addr_o[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_d_data_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_d_data_o[31:0]</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_d_data_o[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_d_rd_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_d_rd_o[3:0]</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_d_rd_o[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_d_we_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_d_we_o[3:0]</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_d_we_o[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_i_addr_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_i_addr_o[31:0]</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_i_addr_o[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_i_rd_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_i_rd_o</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_i_rd_o</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_araddr_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_s_axi_araddr_o[31:0]</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_araddr_o[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_arvalid_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_s_axi_arvalid_o</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_arvalid_o</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_awaddr_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_s_axi_awaddr_o[31:0]</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_awaddr_o[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_awvalid_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_s_axi_awvalid_o</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_awvalid_o</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_rready_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_s_axi_rready_o</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_rready_o</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_wdata_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_s_axi_wdata_o[31:0]</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_wdata_o[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0_s_axi_wvalid_o">
-      <obj_property name="ElementShortName">nano_rv32i_0_s_axi_wvalid_o</obj_property>
-      <obj_property name="ObjectShortName">nano_rv32i_0_s_axi_wvalid_o</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/rst_n_i_0_1">
-      <obj_property name="ElementShortName">rst_n_i_0_1</obj_property>
-      <obj_property name="ObjectShortName">rst_n_i_0_1</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/util_vector_logic_0_Res">
-      <obj_property name="ElementShortName">util_vector_logic_0_Res[0:0]</obj_property>
-      <obj_property name="ObjectShortName">util_vector_logic_0_Res[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/util_vector_logic_1_Res">
-      <obj_property name="ElementShortName">util_vector_logic_1_Res[0:0]</obj_property>
-      <obj_property name="ObjectShortName">util_vector_logic_1_Res[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/xlconstant_0_dout">
-      <obj_property name="ElementShortName">xlconstant_0_dout[3:0]</obj_property>
-      <obj_property name="ObjectShortName">xlconstant_0_dout[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/xlconstant_1_dout">
-      <obj_property name="ElementShortName">xlconstant_1_dout[15:0]</obj_property>
-      <obj_property name="ObjectShortName">xlconstant_1_dout[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/xlconstant_2_dout">
-      <obj_property name="ElementShortName">xlconstant_2_dout[0:0]</obj_property>
-      <obj_property name="ObjectShortName">xlconstant_2_dout[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/gpio_io_i">
-      <obj_property name="ElementShortName">gpio_io_i[15:0]</obj_property>
-      <obj_property name="ObjectShortName">gpio_io_i[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/gpio_io_o">
-      <obj_property name="ElementShortName">gpio_io_o[15:0]</obj_property>
-      <obj_property name="ObjectShortName">gpio_io_o[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/axi_gpio_0/gpio_io_t">
-      <obj_property name="ElementShortName">gpio_io_t[15:0]</obj_property>
-      <obj_property name="ObjectShortName">gpio_io_t[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/clk_i">
-      <obj_property name="ElementShortName">clk_i</obj_property>
-      <obj_property name="ObjectShortName">clk_i</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/i_data_i">
-      <obj_property name="ElementShortName">i_data_i[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_data_i[31:0]</obj_property>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/compare_inst/branch_i">
+         <obj_property name="ElementShortName">branch_i</obj_property>
+         <obj_property name="ObjectShortName">branch_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/compare_inst/zero_i">
+         <obj_property name="ElementShortName">zero_i</obj_property>
+         <obj_property name="ObjectShortName">zero_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/compare_inst/funct3_i">
+         <obj_property name="ElementShortName">funct3_i[2:0]</obj_property>
+         <obj_property name="ObjectShortName">funct3_i[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench_design_1/uut/design_1_i/nano_rv32i_0/inst/compare_inst/take_branch_o">
+         <obj_property name="ElementShortName">take_branch_o</obj_property>
+         <obj_property name="ObjectShortName">take_branch_o</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>
