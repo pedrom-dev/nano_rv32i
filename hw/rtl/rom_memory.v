@@ -5,14 +5,16 @@ module rom_memory (
     output reg [31:0] douta      
 );
 
-    reg [31:0] memory [0:15];  
+    reg [31:0] memory [0:15]; 
 
     initial begin
-        $readmemh("rom_data.hex", memory);  
+        $readmemh("init_mem.mem", memory);
+    end
 
     always @(posedge clk) begin
         if (ena) begin
-            douta <= memory[addra[3:0]]; 
+            douta <= memory[addra[5:2]];
         end
     end
 endmodule
+
