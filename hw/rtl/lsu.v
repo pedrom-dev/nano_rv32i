@@ -37,6 +37,16 @@ module lsu (
     wire is_mmio;
     assign is_mmio = (d_addr_i[31:24] == 8'h30);
     assign is_mmio_o = is_mmio;
+    
+//    always @(posedge clk_i) begin
+//        if(is_mmio && mem_write_i) begin
+//            if(s_axi_bvalid_i) begin
+//                s_axi_bready_o = 0;
+//            end else begin
+//                s_axi_bready_o = 1;
+//            end
+//        end 
+//    end
 
     always @(*) begin
         d_we_o = 4'b0000; 
@@ -58,6 +68,7 @@ module lsu (
                 s_axi_awvalid_o = 1'b1;         // Indicate valid address for AXI write
                 s_axi_wdata_o = d_data_i;       // Map memory write data to AXI write data
                 s_axi_wvalid_o = 1'b1;          // Indicate valid data for AXI write
+                
                 
                 if (s_axi_bvalid_i) begin
                     s_axi_bready_o = 1;

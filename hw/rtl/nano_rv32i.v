@@ -99,7 +99,7 @@ module nano_rv32i (
 
     always @(*) begin
         i_addr_o <= pc_r;
-        i_rd_o <= 1;
+        i_rd_o <= !stall_w;
     end
     
     decoder decoder_inst (
